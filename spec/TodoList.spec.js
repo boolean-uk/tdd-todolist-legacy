@@ -81,6 +81,23 @@ describe('TodoList', () => {
     expect(result).toEqual(expected)
   })
 
+  it('edits the todo item text', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!')
+    const expected = {
+      id: 1,
+      text: 'turn the heating off!',
+      status: 'incomplete',
+      date: new Date().toDateString()
+    }
+
+    // execute
+    const result = todoList.editText(item1.id, 'turn the heating off!')
+
+    // verify
+    expect(result).toEqual(expected)
+  })
+
   it('throws error if not found', () => {
     // set up
 

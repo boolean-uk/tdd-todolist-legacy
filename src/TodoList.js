@@ -42,6 +42,13 @@ class TodoList {
     return item
   }
 
+  editText(id, newText) {
+    const item = this.findBy(id)
+    item.text = newText
+
+    return item
+  }
+
   getByStatus(status) {
     return this.items.filter((item) => item.status === status)
   }
@@ -64,11 +71,5 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 }
-
-const testClass = new TodoList()
-testClass.create('turn the heating on!')
-testClass.create('turn the heating off!')
-testClass.create('turn the heating on again you imbecile, what are you doing?!')
-console.log(testClass.items)
 
 module.exports = TodoList
