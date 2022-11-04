@@ -33,6 +33,15 @@ class TodoList {
     return item
   }
 
+  toggleStatus(id) {
+    const item = this.findBy(id)
+    item.status === 'complete'
+      ? (item.status = 'incomplete')
+      : (item.status = 'complete')
+
+    return item
+  }
+
   getByStatus(status) {
     return this.items.filter((item) => item.status === status)
   }

@@ -64,11 +64,29 @@ describe('TodoList', () => {
     expect(result).toEqual(expected)
   })
 
+  it('switches item status between complete and incomplete if found', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!')
+    const expected = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'complete',
+      date: new Date().toDateString()
+    }
+
+    // execute
+    const result = todoList.toggleStatus(item1.id)
+
+    // verify
+    expect(result).toEqual(expected)
+  })
+
   it('throws error if not found', () => {
     // set up
 
     // execute, verify
     expect(() => todoList.setComplete(1)).toThrowError('Item not found')
+    expect(() => todoList.toggleStatus(1)).toThrowError('Item not found')
   })
 
   it('gets incomplete items', () => {
