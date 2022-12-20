@@ -88,7 +88,7 @@ describe('TodoList', () => {
   it('gets complete items', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')
-    const item2 = todoList.create('Do the washing up')
+    todoList.create('Do the washing up')
     todoList.setComplete(item1.id)
     const expected = [item1]
 
@@ -125,7 +125,7 @@ describe('TodoList', () => {
 
   it('deletes item by id', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
+    todoList.create('turn the heating on!')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
