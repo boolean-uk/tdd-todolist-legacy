@@ -55,6 +55,19 @@ describe('TodoList', () => {
     expect(result).toEqual(expected)
   })
 
+  it('toggles item status', () => {
+    const item1 = todoList.create('turn the heating on!')
+    todoList.setComplete(item1.id)
+    const expected = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'incomplete',
+      date: new Date().toDateString()
+    }
+    const result = todoList.toggleStatus(item1.id)
+    expect(result).toEqual(expected)
+  })
+
   it('throws error if not found', () => {
     expect(() => todoList.setComplete(1)).toThrowError('Item not found')
   })
@@ -129,5 +142,18 @@ describe('TodoList', () => {
     ]
     expect(todoList.getByDate('tue')).toEqual(expected)
     expect(todoList.getByDate('mon')).toEqual([])
+  })
+
+  it('edits text of item', () => {
+    todoList.create('edit if you dare mate :( ')
+    const expected = [
+      {
+        id: 1,
+        text: 'no way I dont dare',
+        status: 'incomplete',
+        date: new Date().toDateString()
+      }
+    ]
+    expect(todoList.editText(1, 'no way I dont dare')).toEqual(expected)
   })
 })

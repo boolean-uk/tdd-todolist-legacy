@@ -36,6 +36,17 @@ class TodoList {
     return item
   }
 
+  toggleStatus(id) {
+    const item = this.findBy(id)
+    if (item.status === 'incomplete') {
+      item.status = 'complete'
+    }
+    if (item.status === 'complete') {
+      item.status = 'incomplete'
+    }
+    return item
+  }
+
   getByStatus(status) {
     return this.items.filter((item) => item.status === status)
   }
@@ -54,6 +65,17 @@ class TodoList {
 
   getByDate(date) {
     return this.items.filter((item) => item.date.toLowerCase().includes(date))
+  }
+
+  editText(id, newText) {
+    const updatedList = this.items.map((item) => {
+      if (item.id === id) {
+        const itemCopy = { ...item, text: newText }
+        return itemCopy
+      }
+      return item
+    })
+    return updatedList
   }
 }
 
