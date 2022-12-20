@@ -12,7 +12,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB')
     }
 
     // execute
@@ -27,12 +28,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB')
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB')
     }
     const expected = [item1, item2]
 
@@ -50,7 +53,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: new Date().toLocaleDateString('en-GB')
     }
 
     // execute
@@ -101,7 +105,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB')
     }
 
     // execute
@@ -124,7 +129,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB')
     }
 
     // execute
@@ -149,7 +155,8 @@ describe('TodoList', () => {
       {
         id: 1,
         text: 'Feed the cats',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: new Date().toLocaleDateString('en-GB')
       }
     ])
   })
@@ -162,12 +169,14 @@ describe('TodoList', () => {
       {
         id: 1,
         text: 'Finish 20 char excer...',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: new Date().toLocaleDateString('en-GB')
       },
       {
         id: 2,
         text: 'Feed the cats',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: new Date().toLocaleDateString('en-GB')
       }
     ])
   })

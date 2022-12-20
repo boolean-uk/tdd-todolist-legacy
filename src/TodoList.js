@@ -2,11 +2,17 @@ class TodoList {
   constructor() {
     this.id = 0
     this.items = []
+    this.date = new Date().toLocaleDateString('en-GB')
   }
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      date: this.date
+    }
     this.items.push(item)
     return item
   }
@@ -66,3 +72,7 @@ class TodoList {
 // splice is then used to remove specific to-do item from item list
 
 module.exports = TodoList
+
+// new Date().toLocaleDateString()
+// .toLocaleDateString("en-GB")
+// syntax for GB time ^
