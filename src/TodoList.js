@@ -90,12 +90,12 @@ class TodoItem {
   }
 }
 
-const todoList = new TodoList()
-const test = todoList.create('go shopping', 'joel')
-todoList.create('do algebra homework', 'joel')
-todoList.create('feed the pigeons', 'joel')
+// const todoList = new TodoList()
+// const test = todoList.create('go shopping', 'joel')
+// todoList.create('do algebra homework', 'joel')
+// todoList.create('feed the pigeons', 'joel')
 
 // console.log(todoList.showAll())
-console.log(test)
+// console.log(test)
 
 module.exports = { TodoList, TodoItem }

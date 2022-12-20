@@ -21,7 +21,7 @@ describe('TodoList', () => {
     const result = todoList.create('turn the heating on!', 'joel')
 
     // verify
-    expect(result).toEqual(expected)
+    expect(result).toEqual(jasmine.objectContaining(expected))
   })
 
   it('returns all items', () => {
@@ -65,7 +65,7 @@ describe('TodoList', () => {
     const result = todoList.setComplete(item1.id)
 
     // verify
-    expect(result).toEqual(expected)
+    expect(result).toEqual(jasmine.objectContaining(expected))
   })
 
   it('throws error if not found', () => {
@@ -118,7 +118,7 @@ describe('TodoList', () => {
     const result = todoList.findBy(item1.id)
 
     // verify
-    expect(result).toEqual(expected)
+    expect(result).toEqual(jasmine.objectContaining(expected))
   })
 
   it('findBy throws error if not found', () => {
@@ -143,7 +143,7 @@ describe('TodoList', () => {
     const deletedItem = todoList.deleteBy(1)
 
     // verify
-    expect(deletedItem).toEqual(expected)
+    expect(deletedItem).toEqual(jasmine.objectContaining(expected))
     expect(todoList.showAll()).toEqual([])
   })
 
@@ -184,7 +184,7 @@ describe('TodoList', () => {
     }
 
     // execute and verify
-    expect(todoList.showAll()).toEqual([expected])
+    expect(todoList.showAll()).toEqual([jasmine.objectContaining(expected)])
   })
 
   it('getTodosByDate should return a list of todos created on the day passed into the function', () => {
@@ -218,7 +218,7 @@ describe('TodoList', () => {
     const updatedTodo = todoList.toggleStatus(1)
 
     // verify
-    expect(updatedTodo).toEqual(expected)
+    expect(updatedTodo).toEqual(jasmine.objectContaining(expected))
   })
 
   it('if no item found, toggleStatus throws an error', () => {
@@ -244,7 +244,7 @@ describe('TodoList', () => {
     )
 
     // verify
-    expect(updatedTodo).toEqual(expected)
+    expect(updatedTodo).toEqual(jasmine.objectContaining(expected))
   })
 
   it('editItemText throws an error if the id cannot be found', () => {
