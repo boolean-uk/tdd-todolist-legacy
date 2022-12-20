@@ -38,6 +38,8 @@ class TodoList {
   }
 
   showMaxChar() {
+    // I think i have the right idea in the rough
+    // but as i am faling i am certain my logic is not sound.
     return TodoList.showAll.text.subtstring(0, 20) + '.....'
   }
 }

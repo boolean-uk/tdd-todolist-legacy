@@ -147,5 +147,7 @@ describe('TodoList', () => {
     const maxChar = TodoList.showAll().substring(0, 20) + '.....'
 
     expect(maxChar.toBe(TodoList.showAll().substring(0, 20) + '.....'))
+    // I think i have the right idea in the rough
+    // but as i am faling i am certain my logic is not sound.
   })
 })
