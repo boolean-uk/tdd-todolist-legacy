@@ -216,4 +216,30 @@ describe('TodoList', () => {
     // execute and verify
     expect(() => todoList.toggleStatus(3)).toThrowError('Item not found')
   })
+
+  it('editItemText takes in a new string and changes the text to match it, returns updated item', () => {
+    // set up
+    todoList.create('go see Avatar 2')
+    const expected = {
+      id: 1,
+      text: 'avoid watching Avatar 2, looks lame',
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
+    }
+
+    // execute
+    const updatedTodo = todoList.editItemText(
+      1,
+      'avoid watching Avatar 2, looks lame'
+    )
+
+    // verify
+    expect(updatedTodo).toEqual(expected)
+  })
+
+  it('editItemText throws an error if the id cannot be found', () => {
+    expect(() => todoList.editItemText(3, 'do something')).toThrowError(
+      'Item not found'
+    )
+  })
 })

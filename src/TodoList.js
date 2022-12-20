@@ -70,6 +70,12 @@ class TodoList {
 
     return item
   }
+
+  editItemText(id, newText) {
+    const item = this.findBy(id)
+    item.text = newText
+    return item
+  }
 }
 
 module.exports = TodoList
