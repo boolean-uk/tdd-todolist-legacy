@@ -6,7 +6,12 @@ class TodoList {
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
+    }
     this.items.push(item)
     return item
   }
@@ -48,6 +53,14 @@ class TodoList {
     })
 
     return limitedTextTodos
+  }
+
+  getTodosByDate(date) {
+    const todos = this.items.filter((item) => item.dateCreated === date)
+
+    if (!todos) return []
+
+    return todos
   }
 }
 

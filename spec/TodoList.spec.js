@@ -12,7 +12,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
     }
 
     // execute
@@ -27,12 +28,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
     }
     const expected = [item1, item2]
 
@@ -50,7 +53,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      dateCreated: new Date().toLocaleDateString()
     }
 
     // execute
@@ -101,7 +105,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
     }
 
     // execute
@@ -124,7 +129,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
     }
 
     // execute
@@ -148,7 +154,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'go for a walk and th...',
-      status: 'incomplete'
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
     }
 
     // execute
@@ -164,10 +171,26 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'go for a walk and then cook dinner',
-      status: 'incomplete'
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
     }
 
     // execute and verify
     expect(todoList.showAll()).toEqual([expected])
+  })
+
+  it('getTodosByDate should return a list of todos created on the day passed into the function', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!')
+    const item2 = todoList.create('feed doggo')
+    const expected = [item1, item2]
+
+    // execute and verify
+    expect(todoList.getTodosByDate('20/12/2022')).toEqual(expected)
+  })
+
+  it('getTodosByDate should return an empty array if there are no todo items created on the passed in date', () => {
+    // execute and verify
+    expect(todoList.getTodosByDate('19/04/1990')).toEqual([])
   })
 })
