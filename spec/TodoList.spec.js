@@ -180,4 +180,23 @@ describe('TodoList', () => {
       }
     ])
   })
+  it('should return all items with same date of creation', () => {
+    todoList.create('turn the heating on!')
+    todoList.create('Do the washing up')
+
+    expect(todoList.showAll()).toEqual([
+      {
+        id: 1,
+        text: 'turn the heating on!',
+        status: 'incomplete',
+        date: new Date().toLocaleDateString('en-GB')
+      },
+      {
+        id: 2,
+        text: 'Do the washing up',
+        status: 'incomplete',
+        date: new Date().toLocaleDateString('en-GB')
+      }
+    ])
+  })
 })

@@ -67,12 +67,20 @@ class TodoList {
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
+
+  findByDate(date) {
+    const found = this.items.find((item) => item.date === date)
+    if (!found) {
+      throw new Error('Item with this date not found')
+    }
+    return found
+  }
+
+  sortToDolistByDate(date) {
+    return this.findByDate(date)
+  }
 }
 // uses findby to find correct item to delete
 // splice is then used to remove specific to-do item from item list
 
 module.exports = TodoList
-
-// new Date().toLocaleDateString()
-// .toLocaleDateString("en-GB")
-// syntax for GB time ^
