@@ -22,6 +22,26 @@ describe("TodoList", () => {
     expect(result).toEqual(expected)
   })
 
+  it('should show only 20 characters of the item', () => {
+    const item1 = {
+      id: 1,
+      text: "turn the heating bef",
+      status: "incomplete"
+    }
+    const item2 = {
+      id: 2,
+      text: "Do the washing up be",
+      status: "incomplete"
+    }
+    const expected = [item1.text, item2.text]
+     // execute
+     todoList.create("turn the heating before you go work!")
+     todoList.create("Do the washing up before you sleep")
+ 
+     // verify
+     expect(todoList.showOnly20Chars()).toEqual(expected)
+  }) 
+
   it("returns all items", () => {
     // set up
     const item1 = {

@@ -15,6 +15,13 @@ class TodoList {
     return this.items
   }
 
+  showOnly20Chars(){
+    let todo20Chars = []
+    this.items.forEach(dog => {
+      todo20Chars.push(dog.text.substring(0, 20));
+    });
+    return todo20Chars
+  }
   setComplete (id) {
     const item = this.findBy(id)
     item.status = 'complete'
