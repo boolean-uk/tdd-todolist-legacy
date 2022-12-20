@@ -1,4 +1,4 @@
-const TodoList = require('../src/TodoList.js')
+const { TodoList, TodoItem } = require('../src/TodoList.js')
 
 describe('TodoList', () => {
   let todoList
@@ -13,11 +13,12 @@ describe('TodoList', () => {
       id: 1,
       text: 'turn the heating on!',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'joel'
     }
 
     // execute
-    const result = todoList.create('turn the heating on!')
+    const result = todoList.create('turn the heating on!', 'joel')
 
     // verify
     expect(result).toEqual(expected)
@@ -29,19 +30,21 @@ describe('TodoList', () => {
       id: 1,
       text: 'turn the heating on!',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'bob'
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'bob'
     }
     const expected = [item1, item2]
 
     // execute
-    todoList.create('turn the heating on!')
-    todoList.create('Do the washing up')
+    todoList.create('turn the heating on!', 'bob')
+    todoList.create('Do the washing up', 'bob')
 
     // verify
     expect(todoList.showAll()).toEqual(expected)
@@ -49,12 +52,13 @@ describe('TodoList', () => {
 
   it('sets item to be complete if found', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
+    const item1 = todoList.create('turn the heating on!', 'joel')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
       status: 'complete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'joel'
     }
 
     // execute
@@ -73,8 +77,8 @@ describe('TodoList', () => {
 
   it('gets incomplete items', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
-    const item2 = todoList.create('Do the washing up')
+    const item1 = todoList.create('turn the heating on!', 'sarah')
+    const item2 = todoList.create('Do the washing up', 'sarah')
     todoList.setComplete(item1.id)
     const expected = [item2]
 
@@ -87,8 +91,8 @@ describe('TodoList', () => {
 
   it('gets complete items', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
-    todoList.create('Do the washing up')
+    const item1 = todoList.create('turn the heating on!', 'joel')
+    todoList.create('Do the washing up', 'joel')
     todoList.setComplete(item1.id)
     const expected = [item1]
 
@@ -101,12 +105,13 @@ describe('TodoList', () => {
 
   it('finds item by id', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
+    const item1 = todoList.create('turn the heating on!', 'pedro')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'pedro'
     }
 
     // execute
@@ -125,12 +130,13 @@ describe('TodoList', () => {
 
   it('deletes item by id', () => {
     // set up
-    todoList.create('turn the heating on!')
+    todoList.create('turn the heating on!', 'kate')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'kate'
     }
 
     // execute
@@ -150,12 +156,13 @@ describe('TodoList', () => {
 
   it('limitTextTo20Chars should return only 20 characters of the todo item text followed by ...', () => {
     // set up
-    todoList.create('go for a walk and then cook dinner')
+    todoList.create('go for a walk and then cook dinner', 'charlie')
     const expected = {
       id: 1,
       text: 'go for a walk and th...',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'charlie'
     }
 
     // execute
@@ -167,12 +174,13 @@ describe('TodoList', () => {
 
   it('if there is only one todo item, showAll should not limit the text to 20 chars', () => {
     // set up
-    todoList.create('go for a walk and then cook dinner')
+    todoList.create('go for a walk and then cook dinner', 'sven')
     const expected = {
       id: 1,
       text: 'go for a walk and then cook dinner',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'sven'
     }
 
     // execute and verify
@@ -196,13 +204,14 @@ describe('TodoList', () => {
 
   it('toggleStatus switches status of one todo from complete to incomplete', () => {
     // set up
-    todoList.create('turn the heating on!')
+    todoList.create('turn the heating on!', 'bob')
     todoList.setComplete(1)
     const expected = {
       id: 1,
       text: 'turn the heating on!',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'bob'
     }
 
     // execute
@@ -219,12 +228,13 @@ describe('TodoList', () => {
 
   it('editItemText takes in a new string and changes the text to match it, returns updated item', () => {
     // set up
-    todoList.create('go see Avatar 2')
+    todoList.create('go see Avatar 2', 'joel')
     const expected = {
       id: 1,
       text: 'avoid watching Avatar 2, looks lame',
       status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
+      dateCreated: new Date().toLocaleDateString(),
+      name: 'joel'
     }
 
     // execute
@@ -242,4 +252,17 @@ describe('TodoList', () => {
       'Item not found'
     )
   })
+
+  it('an instance can be created successfully from the TodoItem class', () => {
+    const test = new TodoItem('joel', 'go shopping', 'incomplete')
+
+    expect(test).toBeInstanceOf(TodoItem)
+  })
 })
+
+// const expected = {
+//   name: 'joel',
+//   text: 'go shopping',
+//   status: 'incomplete',
+//   dateCreated: new Date().toLocaleDateString()
+// }

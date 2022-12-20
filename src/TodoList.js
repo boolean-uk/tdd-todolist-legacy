@@ -4,14 +4,16 @@ class TodoList {
     this.items = []
   }
 
-  create(str) {
+  create(str, name) {
     this.id++
-    const item = {
-      id: this.id,
-      text: str,
-      status: 'incomplete',
-      dateCreated: new Date().toLocaleDateString()
-    }
+    // const item = {
+    //   id: this.id,
+    //   text: str,
+    //   status: 'incomplete',
+    //   dateCreated: new Date().toLocaleDateString()
+    // }
+    // this.items.push(item)
+    const item = new TodoItem(this.id, name, str, 'incomplete')
     this.items.push(item)
     return item
   }
@@ -78,4 +80,22 @@ class TodoList {
   }
 }
 
-module.exports = TodoList
+class TodoItem {
+  constructor(id, name, text, status) {
+    this.id = id
+    this.name = name
+    this.text = text
+    this.status = status
+    this.dateCreated = new Date().toLocaleDateString()
+  }
+}
+
+const todoList = new TodoList()
+const test = todoList.create('go shopping', 'joel')
+todoList.create('do algebra homework', 'joel')
+todoList.create('feed the pigeons', 'joel')
+
+// console.log(todoList.showAll())
+console.log(test)
+
+module.exports = { TodoList, TodoItem }
