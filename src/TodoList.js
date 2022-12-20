@@ -62,6 +62,14 @@ class TodoList {
 
     return todos
   }
+
+  toggleStatus(id) {
+    const item = this.findBy(id)
+    if (item.status === 'incomplete') item.status = 'complete'
+    if (item.status === 'complete') item.status = 'incomplete'
+
+    return item
+  }
 }
 
 module.exports = TodoList

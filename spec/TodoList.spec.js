@@ -193,4 +193,27 @@ describe('TodoList', () => {
     // execute and verify
     expect(todoList.getTodosByDate('19/04/1990')).toEqual([])
   })
+
+  it('toggleStatus switches status of one todo from complete to incomplete', () => {
+    // set up
+    todoList.create('turn the heating on!')
+    todoList.setComplete(1)
+    const expected = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'incomplete',
+      dateCreated: new Date().toLocaleDateString()
+    }
+
+    // execute
+    const updatedTodo = todoList.toggleStatus(1)
+
+    // verify
+    expect(updatedTodo).toEqual(expected)
+  })
+
+  it('if no item found, toggleStatus throws an error', () => {
+    // execute and verify
+    expect(() => todoList.toggleStatus(3)).toThrowError('Item not found')
+  })
 })
