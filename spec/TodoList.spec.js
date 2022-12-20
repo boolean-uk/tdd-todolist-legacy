@@ -154,6 +154,7 @@ describe('TodoList', () => {
 
     expect(maxToDoText).toEqual([result])
   })
+
   it('if there only 1 ToDo the showAll, should not limit the number of text characters shown.', () => {
     todoList.create('Sweep the house and order the garage')
     const result = {
@@ -162,5 +163,16 @@ describe('TodoList', () => {
       status: 'incomplete'
     }
     expect(todoList.showAll()).toEqual([result])
+  })
+
+  it('Should allow a user to search for ToDos by their date of creation', () => {
+    const todo1 = todoList.create('sit in the shower and cry')
+    const todo2 = todoList.create('watch star wars like a boss')
+
+    const result = [todo1, todo2]
+
+    expect(todoList.creationDate('date that the ToDo was created')).toEqual(
+      result
+    )
   })
 })

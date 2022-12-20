@@ -6,7 +6,12 @@ class TodoList {
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      creationDate: 'date that the ToDo was created'
+    }
     this.items.push(item)
     return item
   }
@@ -46,6 +51,16 @@ class TodoList {
       return { maxText }
     })
     return maxText
+  }
+
+  todoCreationDate(date) {
+    const todoDate = this.items.filter((item) => item.creationDate === date)
+
+    if (!todoDate) {
+      return []
+    }
+
+    return todoDate
   }
 }
 
