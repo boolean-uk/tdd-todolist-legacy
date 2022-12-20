@@ -38,9 +38,14 @@ class TodoList {
   }
 
   showMaxChar() {
-    // I think i have the right idea in the rough
-    // but as i am faling i am certain my logic is not sound.
-    return TodoList.showAll.text.subtstring(0, 20) + '.....'
+    // eslint-disable-next-line no-unused-vars
+    const maxText = this.items.map((item) => {
+      if (item.text.length > 20) {
+        return { ...item, text: `${item.text.substring(0, 20)}....` }
+      }
+      return { maxText }
+    })
+    return maxText
   }
 }
 

@@ -144,10 +144,21 @@ describe('TodoList', () => {
   })
 
   it('should only show 20 chars of the ToDos if there is more than one ToDo', () => {
-    const maxChar = TodoList.showAll().substring(0, 20) + '.....'
+    todoList.create('Take out the rubbish and clean the house of hostiles')
+    const result = {
+      id: 1,
+      text: 'Take out the rubbish....',
+      status: 'incomplete'
+    }
+    const maxToDoText = todoList.showMaxChar()
 
-    expect(maxChar.toBe(TodoList.showAll().substring(0, 20) + '.....'))
-    // I think i have the right idea in the rough
-    // but as i am faling i am certain my logic is not sound.
+    expect(maxToDoText).toEqual([result])
   })
+  // it('if there only 1 ToDo the showAll, should not limit the number of text characters shown.', () => {
+  //   todoList.create('Sweep the house and order the garage')
+  //   const expected = {
+  //     id: 1,
+  //     text: 'Sweep the house and order the garage',
+  //     status: 'incomplete'
+  //   }
 })
