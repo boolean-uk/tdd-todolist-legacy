@@ -11,22 +11,25 @@ class TodoList {
     return item
   }
 
+  formatTextOverflow() {
+    const reducedText = [...this.items]
+
+    reducedText.forEach((item) => {
+      if (item.text.length >= 20) {
+        console.log('item is bigger than 20')
+        item.text = item.text.slice(0, 17) + '...'
+      }
+    })
+
+    return reducedText
+  }
+
   showAll() {
     if (this.items.length === 1) {
       return this.items
     }
 
-    const reducedText = [...this.items]
-    reducedText.forEach((item) => {
-      if (item.text.length >= 20) {
-        console.log('item is bigger than 20')
-        item.text = item.text.slice(0, 17)
-        item.text += '...'
-      }
-    })
-
-    console.log(reducedText)
-    return reducedText
+    return this.formatTextOverflow()
   }
 
   setComplete(id) {
