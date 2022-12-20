@@ -28,6 +28,13 @@ describe('TodoList', () => {
     expect(todoList.showAll()).toEqual(expected)
   })
 
+  it('returns alone item in full character length', () => {
+    const item1 = todoList.create('turn the heating on!')
+    const expected = [item1]
+
+    expect(todoList.showAll()).toEqual(expected)
+  })
+
   // setComplete(id)
   it('sets item to be complete if found', () => {
     const item1 = todoList.create('turn the heating on!')
