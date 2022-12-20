@@ -6,7 +6,12 @@ class TodoList {
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      created: new Date()
+    }
     this.items.push(item)
     return item
   }
@@ -16,7 +21,6 @@ class TodoList {
 
     reducedText.forEach((item) => {
       if (item.text.length >= 20) {
-        console.log('item is bigger than 20')
         item.text = item.text.slice(0, 17) + '...'
       }
     })
@@ -46,6 +50,11 @@ class TodoList {
     const item = this.items.find((item) => item.id === id)
     if (item === undefined) throw new Error('Item not found')
     return item
+  }
+
+  filterByDay(day) {
+    const items = this.items.filter((item) => item.created.getDate() === day)
+    return items
   }
 
   deleteBy(id) {

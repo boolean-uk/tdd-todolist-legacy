@@ -9,14 +9,9 @@ describe('TodoList', () => {
 
   // create(str)
   it('creates a todo item', () => {
-    const expected = {
-      id: 1,
-      text: 'turn the heating on!',
-      status: 'incomplete'
-    }
-
     const result = todoList.create('turn the heating on!')
-    expect(result).toEqual(expected)
+    const expected = 'turn the heating on!'
+    expect(result.text).toEqual(expected)
   })
 
   // showAll()
@@ -79,6 +74,17 @@ describe('TodoList', () => {
 
   it('findBy throws error if not found', () => {
     expect(() => todoList.findBy(1)).toThrowError('Item not found')
+  })
+
+  // filterByDay(day)
+  it('expects a list of items made in the day given to the function', () => {
+    const item1 = todoList.create('turn the heating on!')
+    const item2 = todoList.create('remove the cooling!')
+    const today = new Date().getDate()
+    item1.created.setDate(today - 1)
+
+    const expected = [item2]
+    expect(todoList.filterByDay(today)).toEqual(expected)
   })
 
   // deleteBy(id)
