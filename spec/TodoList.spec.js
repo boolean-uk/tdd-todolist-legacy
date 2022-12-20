@@ -154,11 +154,13 @@ describe('TodoList', () => {
 
     expect(maxToDoText).toEqual([result])
   })
-  // it('if there only 1 ToDo the showAll, should not limit the number of text characters shown.', () => {
-  //   todoList.create('Sweep the house and order the garage')
-  //   const expected = {
-  //     id: 1,
-  //     text: 'Sweep the house and order the garage',
-  //     status: 'incomplete'
-  //   }
+  it('if there only 1 ToDo the showAll, should not limit the number of text characters shown.', () => {
+    todoList.create('Sweep the house and order the garage')
+    const result = {
+      id: 1,
+      text: 'Sweep the house and order the garage',
+      status: 'incomplete'
+    }
+    expect(todoList.showAll()).toEqual([result])
+  })
 })
