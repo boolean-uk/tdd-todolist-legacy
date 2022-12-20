@@ -15,9 +15,25 @@ class TodoList {
   // push new item into to-do list + is returned
 
   showAll() {
-    return this.items
+    if (this.items.length === 1) {
+      return this.items
+    }
+    return this.twentyCharsMax()
   }
   // returns all to-do items
+
+  twentyCharsMax() {
+    const newItemsList = this.items.map((item) => {
+      if (item.text.length > 20) {
+        return { ...item, text: `${item.text.substring(0, 20)}...` }
+      }
+      return item
+    })
+
+    return newItemsList
+  }
+  // maps through items list + if item text is longer than 20 cuts it off + ...is interpolated
+  // If items chars a re less than 20 , item is returned
 
   setComplete(id) {
     const item = this.findBy(id)
@@ -48,4 +64,5 @@ class TodoList {
 }
 // uses findby to find correct item to delete
 // splice is then used to remove specific to-do item from item list
+
 module.exports = TodoList

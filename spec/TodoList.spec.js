@@ -84,7 +84,7 @@ describe('TodoList', () => {
   it('gets complete items', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')
-    const item2 = todoList.create('Do the washing up')
+    todoList.create('Do the washing up')
     todoList.setComplete(item1.id)
     const expected = [item1]
 
@@ -120,7 +120,7 @@ describe('TodoList', () => {
 
   it('deletes item by id', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
+    todoList.create('turn the heating on!')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
@@ -140,5 +140,35 @@ describe('TodoList', () => {
 
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
+  })
+
+  it('should return whole item if items list is only 1 item long', () => {
+    todoList.create('Feed the cats')
+
+    expect(todoList.showAll()).toEqual([
+      {
+        id: 1,
+        text: 'Feed the cats',
+        status: 'incomplete'
+      }
+    ])
+  })
+
+  it('should display first 20 characters of each item on to-do list', () => {
+    todoList.create('Finish 20 char excercise on to-do list')
+    todoList.create('Feed the cats')
+
+    expect(todoList.showAll()).toEqual([
+      {
+        id: 1,
+        text: 'Finish 20 char excer...',
+        status: 'incomplete'
+      },
+      {
+        id: 2,
+        text: 'Feed the cats',
+        status: 'incomplete'
+      }
+    ])
   })
 })
