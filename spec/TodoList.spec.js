@@ -12,11 +12,12 @@ describe("TodoList", () => {
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: ''
     }
 
     // execute
-    const result = todoList.create("turn the heating on!")
+    const result = todoList.create("turn the heating on!", '')
 
     // verify
     expect(result).toEqual(expected)
@@ -26,19 +27,21 @@ describe("TodoList", () => {
     // set up
     const item1 = {
       id: 1,
-      text: "0123456789 012345678",
-      status: "incomplete"
+      text: "0123456789 012345678...",
+      status: "incomplete",
+      date: ''
     }
     const item2 = {
       id: 2,
-      text: "0123456789 012345678",
-      status: "incomplete"
+      text: "0123456789 012345678...",
+      status: "incomplete",
+      date: ''
     }
     const expected = [item1, item2]
 
     // execute
-    todoList.create("0123456789 0123456789 0123456789")
-    todoList.create("0123456789 0123456789 0123456789")
+    todoList.create("0123456789 0123456789 0123456789", '')
+    todoList.create("0123456789 0123456789 0123456789", '')
 
     // verify
     expect(todoList.showAll()).toEqual(expected)
@@ -46,11 +49,12 @@ describe("TodoList", () => {
 
   it("sets item to be complete if found", () => {
     // set up
-    const item1 = todoList.create("turn the heating on!")
+    const item1 = todoList.create("turn the heating on!", '')
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "complete"
+      status: "complete",
+      date: ''
     }
 
     // execute
@@ -69,8 +73,8 @@ describe("TodoList", () => {
 
   it("gets incomplete items", () => {
     // set up
-    const item1 = todoList.create("turn the heating on!")
-    const item2 = todoList.create("Do the washing up")
+    const item1 = todoList.create("turn the heating on!", '')
+    const item2 = todoList.create("Do the washing up", '')
     todoList.setComplete(item1.id)
     const expected = [item2]
 
@@ -83,8 +87,8 @@ describe("TodoList", () => {
 
   it("gets complete items", () => {
     // set up
-    const item1 = todoList.create("turn the heating on!")
-    const item2 = todoList.create("Do the washing up")
+    const item1 = todoList.create("turn the heating on!", '')
+    const item2 = todoList.create("Do the washing up", '')
     todoList.setComplete(item1.id)
     const expected = [item1]
 
@@ -97,11 +101,12 @@ describe("TodoList", () => {
 
   it("finds item by id", () => {
     // set up
-    const item1 = todoList.create("turn the heating on!")
+    const item1 = todoList.create("turn the heating on!", '')
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: ''
     }
 
     // execute
@@ -120,11 +125,12 @@ describe("TodoList", () => {
 
   it("deletes item by id", () => {
     // set up
-    const item1 = todoList.create("turn the heating on!")
+    const item1 = todoList.create("turn the heating on!", '')
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: ''
     }
 
     // execute
@@ -140,5 +146,27 @@ describe("TodoList", () => {
 
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
+  })
+  it('seach for items by day', () => {
+    todoList.create('test1', 'monday')
+    todoList.create('test2', 'monday')
+    todoList.create('test3', 'tuesday')
+    const expected = [
+      {
+        id: 1,
+        text: 'test1',
+        status: 'incomplete',
+        date: 'monday'
+      },
+      {
+        id: 2,
+        text: 'test2',
+        status: 'incomplete',
+        date: 'monday'
+      }
+    ]
+    const result = todoList.findByDay('monday')
+
+    expect(result).toEqual(expected)
   })
 })
