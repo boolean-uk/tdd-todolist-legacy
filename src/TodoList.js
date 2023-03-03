@@ -12,6 +12,13 @@ class TodoList {
   }
 
   showAll () {
+    const charachterlimit = []
+    this.items.forEach((item) => {
+      charachterlimit.push(item.text.substring(0, 20))
+    })
+    charachterlimit.forEach((str, index) => {
+      this.items[index].text = str
+    })
     return this.items
   }
 
