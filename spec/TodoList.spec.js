@@ -12,7 +12,8 @@ describe("TodoList", () => {
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: new Date().toDateString()
     }
 
     // execute
@@ -27,17 +28,19 @@ describe("TodoList", () => {
     const item1 = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: new Date().toDateString()
     }
     const item2 = {
       id: 2,
       text: "Do the washing up",
-      status: "incomplete"
+      status: "incomplete",
+      date: new Date().toDateString()
     }
     const expected = [item1, item2]
 
     // execute
-    todoList.create("turn the heating on!")
+    todoList.create("turn the heating on!111111")
     todoList.create("Do the washing up")
 
     // verify
@@ -50,9 +53,11 @@ describe("TodoList", () => {
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "complete"
+      status: "complete",
+      date: new Date().toDateString()
+  
     }
-
+console.log("iten1" , item1)
     // execute
     const result = todoList.setComplete(item1.id)
 
@@ -101,7 +106,8 @@ describe("TodoList", () => {
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: new Date().toDateString()
     }
 
     // execute
@@ -124,7 +130,8 @@ describe("TodoList", () => {
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: new Date().toDateString()
     }
 
     // execute
@@ -140,5 +147,35 @@ describe("TodoList", () => {
 
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
+  })
+
+  it("finds item by date", () => {
+    //set up
+    const item1 = todoList.create("turn the heating on!")
+    const expected ={   
+      id: 1,
+      text: "turn the heating on!",
+      status: "incomplete",
+      date: new Date().toDateString()
+    }
+    //execute
+    const result =(item1)
+    //verify
+    expect(result).toEqual(expected)
+  })
+
+  it("edit text of item", () => {
+    //set up
+      todoList.create('cooked dinner')
+    const expected = {
+      id: 1,
+      text: "turn the heating on!",
+      status: "incomplete",
+      date: new Date().toDateString()
+    }
+    //execute
+ const result = todoList.editText("turn the heating on!")
+    //verify
+    expect(result).toEqual(expected)
   })
 })
