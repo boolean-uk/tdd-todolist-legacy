@@ -52,6 +52,24 @@ describe('TodoList', () => {
     expect(todoList.showAll()).toEqual(expected)
   })
 
+  it('returns all items, not truncated text when only one item', () => {
+    // set up
+    const item = {
+      id: 1,
+      text: 'Go to the Winchester, have a pint, and wait for all this to blow over',
+      status: 'incomplete'
+    }
+    const expected = [item]
+
+    // execute
+    todoList.create(
+      'Go to the Winchester, have a pint, and wait for all this to blow over'
+    )
+
+    // verify
+    expect(todoList.showAll()).toEqual(expected)
+  })
+
   it('sets item to be complete if found', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')

@@ -12,6 +12,9 @@ class TodoList {
   }
 
   showAll() {
+    if (this.items.length <= 1) {
+      return this.items
+    }
     const clone = this.items.map((item)=> {
       if (item.text.length > 20) {
         item.text = `${item.text.slice(0, 20)}...`
