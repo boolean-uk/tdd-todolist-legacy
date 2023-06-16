@@ -13,7 +13,14 @@ class TodoList {
   }
 
   showAll() {
-    return this.items
+    const displayList = this.items.map((item) => {
+      const displayItem = { ...item }
+      if (displayItem.text.length > 20 && this.items.length > 1) {
+        displayItem.text = `${displayItem.text.slice(0, 20)}...`
+      }
+      return displayItem
+    })
+    return displayList
   }
 
   setComplete(id) {
@@ -36,6 +43,10 @@ class TodoList {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
+  }
+
+  findByDate(date) {
+    return this.items.filter((item) => item.date === date)
   }
 }
 
