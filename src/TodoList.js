@@ -50,9 +50,7 @@ class TodoList {
 
   findByDate(date) {
     const item = this.items.find((item) => item.date === date)
-    console.log('item', item)
     if (item === undefined) return []
-
 
     return item
   }
@@ -64,10 +62,10 @@ class TodoList {
   }
 }
 const td = new TodoList()
-td.create('Do the washing up, you lazy piece of corn')
-td.create('Do the washing up, you lazy piece of corn number 2')
-td.create('Do the washing up, you lazy piece of corn number 3')
-console.log('td', td)
-console.log('all', td.showAll())
+// td.create('Do the washing up, you lazy piece of corn')
+// td.create('Do the washing up, you lazy piece of corn number 2')
+// td.create('Do the washing up, you lazy piece of corn number 3')
+// console.log('td', td)
+// console.log('all', td.showAll())
 
 module.exports = TodoList
