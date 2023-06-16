@@ -12,7 +12,14 @@ class TodoList {
   }
 
   showAll() {
-    return this.items
+    const clone = this.items.map((item)=> {
+      if (item.text.length > 20) {
+        item.text = `${item.text.slice(0, 20)}...`
+        return item
+      }
+      return item
+    })
+    return clone
   }
 
   setComplete(id) {

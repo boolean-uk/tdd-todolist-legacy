@@ -34,11 +34,19 @@ describe('TodoList', () => {
       text: 'Do the washing up',
       status: 'incomplete'
     }
-    const expected = [item1, item2]
+    const item3 = {
+      id: 3,
+      text: 'Go to the Winchester...',
+      status: 'incomplete'
+    }
+    const expected = [item1, item2, item3]
 
     // execute
     todoList.create('turn the heating on!')
     todoList.create('Do the washing up')
+    todoList.create(
+      'Go to the Winchester, have a pint, and wait for all this to blow over'
+    )
 
     // verify
     expect(todoList.showAll()).toEqual(expected)
