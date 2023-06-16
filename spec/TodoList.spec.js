@@ -44,6 +44,30 @@ describe('TodoList', () => {
     expect(todoList.showAll()).toEqual(expected)
   })
 
+  it('returns all items limited to 20 characters', () => {
+    // set up
+    const item1 = {
+      id: 1,
+      text: 'turn the heating on!...',
+      status: 'incomplete'
+    }
+    const item2 = {
+      id: 2,
+      text: 'Do the washing up, y...',
+      status: 'incomplete'
+    }
+    const expected = [item1, item2]
+
+    // execute
+    todoList.create('turn the heating on! Come on!')
+    todoList.create('Do the washing up, you lazy piece of corn')
+
+    // verify
+    expect(todoList.showAll()).toEqual(expected)
+  })
+
+
+
   it('sets item to be complete if found', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')

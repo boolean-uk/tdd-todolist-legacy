@@ -12,8 +12,15 @@ class TodoList {
   }
 
   showAll() {
-    return this.items
+    let copy = [...this.items]
+    for(let i=0; i <= this.items.length -1; i++) {
+      if(this.items[i].text.length > 20 ) {
+      copy[i].text = copy[i].text.substring(0,20) + '...'
+      }
+    }
+    return copy
   }
+
 
   setComplete(id) {
     const item = this.findBy(id)
@@ -22,7 +29,14 @@ class TodoList {
   }
 
   getByStatus(status) {
-    return this.items.filter((item) => item.status === status)
+    let copy = [...this.items]
+    for(let i=0; i <= this.items.length -1; i++) {
+      if(this.items[i].text.length > 20 ) {
+      copy[i].text = copy[i].text.substring(0,20) + '...'
+      }
+    }
+    return copy.filter(((item) => item.status === status))
+
   }
 
   findBy(id) {
@@ -37,5 +51,11 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 }
+let td = new TodoList()
+td.create('Do the washing up, you lazy piece of corn')
+td.create('Do the washing up, you lazy piece of corn number 2')
+td.create('Do the washing up, you lazy piece of corn number 3')
+console.log('td', td)
+console.log("all", td.showAll())
 
 module.exports = TodoList
