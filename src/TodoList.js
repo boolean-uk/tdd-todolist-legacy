@@ -6,19 +6,22 @@ class TodoList {
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const todaysDate = new Date()
+    const dateString = `${todaysDate.getFullYear()}-${todaysDate.getMonth()+1}-${todaysDate.getDate()}`
+    const dateStringTwo = todaysDate.toLocalFormat()
+    const item = { id: this.id, text: str, status: 'incomplete', date: dateString }
     this.items.push(item)
     return item
   }
 
   showAll() {
-    const checkedArr = this.items.map((obj) => {
-      if (obj.text.length > 20) {
-        obj.text = obj.text.slice(0, 20) + '...'
-      }
-      return obj
-    })
-    return checkedArr
+   const findItem20Char = this.items.map((obj) => {
+  if (obj.text.length > 20){
+    obj.text = obj.text.slice(0,20).concat('...')
+  } 
+  return obj
+   })
+  return findItem20Char
   }
 
   setComplete(id) {
@@ -43,7 +46,9 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 }
-const todo = new TodoList()
-const hello = todo.create('hello world')
-console.log(hello.text.length)
+
+
+
 module.exports = TodoList
+
+

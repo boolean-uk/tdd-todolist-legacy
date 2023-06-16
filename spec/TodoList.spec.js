@@ -12,7 +12,8 @@ describe('TodoList', () => {
       const expected = {
         id: 1,
         text: 'turn the heating on!',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: "2023-6-16"
       }
 
       // execute
@@ -28,12 +29,14 @@ describe('TodoList', () => {
       const item1 = {
         id: 1,
         text: 'turn the heating on!',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: "2023-6-16"
       }
       const item2 = {
         id: 2,
         text: 'Do the washing up',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: "2023-6-16"
       }
 
       // execute
@@ -47,8 +50,8 @@ describe('TodoList', () => {
     it('if item text is more than 20 char , it should show only the first 20 char and ...', () => {
       // set up
       const expected = [
-        { id: 1, text: 'Hello world how are ...', status: 'incomplete' },
-        { id: 2, text: 'Do the washing up no...', status: 'incomplete' }
+        { id: 1, text: 'Hello world how are ...', status: 'incomplete', date: "2023-6-16" },
+        { id: 2, text: 'Do the washing up no...', status: 'incomplete', date: "2023-6-16" }
       ]
 
       // execute
@@ -66,7 +69,8 @@ describe('TodoList', () => {
       const expected = {
         id: 1,
         text: 'turn the heating on!',
-        status: 'complete'
+        status: 'complete',
+        date: "2023-6-16"
       }
 
       // execute
@@ -119,7 +123,8 @@ describe('TodoList', () => {
       const expected = {
         id: 1,
         text: 'turn the heating on!',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: "2023-6-16"
       }
 
       // execute
@@ -143,7 +148,8 @@ describe('TodoList', () => {
       const expected = {
         id: 1,
         text: 'turn the heating on!',
-        status: 'incomplete'
+        status: 'incomplete',
+        date: "2023-6-16"
       }
 
       // execute
