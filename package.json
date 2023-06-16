@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jasmine",
+    "watch-mode": "nodemon --exec jasmine"
   },
   "author": "",
   "license": "ISC",
@@ -19,7 +20,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^5.1.0",
     "jasmine": "^5.0.1",
-    "nodemon": "^2.0.13",
+    "nodemon": "^2.0.22",
     "prettier": "^2.6.2"
   }
 }
