@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const TodoList = require('../src/TodoList.js')
 
 describe('TodoList', () => {
