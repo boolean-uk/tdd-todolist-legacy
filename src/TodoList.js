@@ -6,17 +6,25 @@ class TodoList {
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      date: new Date().toDateString()
+    }
     this.items.push(item)
     return item
   }
 
   showAll() {
     const cutItems = [...this.items]
-    cutItems.forEach(
-      (item) => (item.text = item.text.substring(0, 20).concat('...'))
-    )
-    console.log(cutItems)
+
+    for (const item of cutItems) {
+      if (item.text.length > 20) {
+        item.text = item.text.substring(0, 20).concat('...')
+      }
+    }
+
     return cutItems
   }
 
@@ -36,6 +44,12 @@ class TodoList {
     return item
   }
 
+  filterByDay(day) {
+    const item = this.items.filter((item) => item.date.includes(day))
+    if (item === undefined) throw new Error('Item not found')
+    return item
+  }
+
   deleteBy(id) {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
@@ -46,6 +60,5 @@ const testClass = new TodoList()
 testClass.create('turn the heating on!')
 testClass.create('turn the heating off!')
 testClass.create('turn the heating on again you imbecile, what are you doing?!')
-console.log(testClass.showAll())
 
 module.exports = TodoList

@@ -12,7 +12,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toDateString()
     }
 
     // execute
@@ -27,12 +28,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toDateString()
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toDateString()
     }
     const expected = [item1, item2]
 
@@ -50,12 +53,12 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: new Date().toDateString()
     }
 
     // execute
     const result = todoList.setComplete(item1.id)
-
     // verify
     expect(result).toEqual(expected)
   })
@@ -101,12 +104,12 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toDateString()
     }
 
     // execute
     const result = todoList.findBy(item1.id)
-
     // verify
     expect(result).toEqual(expected)
   })
@@ -118,18 +121,28 @@ describe('TodoList', () => {
     expect(() => todoList.findBy(1)).toThrowError('Item not found')
   })
 
+  it('filterByDay lists todoitems created on that day', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!')
+    const item2 = todoList.create('Do the washing up')
+    const day = new Date().toDateString().substring(0, 3)
+    // execute, verify
+    expect(todoList.filterByDay(day).length).toBe(2)
+    expect(todoList.filterByDay('wrong day').length).toBe(0)
+  })
+
   it('deletes item by id', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toDateString()
     }
 
     // execute
     const deletedItem = todoList.deleteBy(1)
-
     // verify
     expect(deletedItem).toEqual(expected)
     expect(todoList.showAll()).toEqual([])
