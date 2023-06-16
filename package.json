@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npx jasmine",
-    "watch-mode": "nodemon --exec 'npx jasmine'"
+    "watch-mode": "nodemon --exec jasmine"
   },
   "author": "",
   "license": "ISC",
