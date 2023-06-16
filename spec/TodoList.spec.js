@@ -179,17 +179,19 @@ describe('TodoList', () => {
 
   it('gets items by date', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
+    todoList.create('turn the heating on!')
 
-    const expected = {
-      id: 1,
-      text: 'turn the heating on!',
-      status: 'incomplete',
-      date: date.toLocaleDateString()
-    }
+    const expected = [
+      {
+        id: 1,
+        text: 'turn the heating on!',
+        status: 'incomplete',
+        date: date.toLocaleDateString()
+      }
+    ]
 
     // execute
-    const result = todoList.getByDate(item1.id)
+    const result = todoList.getByDate(date.toLocaleDateString())
 
     // verify
     expect(result).toEqual(expected)
