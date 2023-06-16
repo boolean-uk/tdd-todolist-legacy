@@ -147,7 +147,6 @@ describe('TodoList', () => {
 
   it('findBy throws error if not found', () => {
     // set up
-
     // execute, verify
     expect(() => todoList.findBy(1)).toThrowError('Item not found')
   })
@@ -172,7 +171,6 @@ describe('TodoList', () => {
 
   it('delete throws error if not found', () => {
     // set up
-
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
   })
@@ -180,6 +178,8 @@ describe('TodoList', () => {
   it('gets items by date', () => {
     // set up
     todoList.create('turn the heating on!')
+    todoList.create('turn the heating off!')
+    todoList.items[1].date = '01/01/2010'
 
     const expected = [
       {
@@ -189,10 +189,18 @@ describe('TodoList', () => {
         date: date.toLocaleDateString()
       }
     ]
-
     // execute
     const result = todoList.getByDate(date.toLocaleDateString())
+    // verify
+    expect(result).toEqual(expected)
+  })
 
+  it('return empty array if no items for specified date', () => {
+    // set up
+    todoList.create('turn the heating on!')
+    const expected = []
+    // execute
+    const result = todoList.getByDate('01/01/0001')
     // verify
     expect(result).toEqual(expected)
   })
