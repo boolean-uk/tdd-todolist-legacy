@@ -12,7 +12,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
 
     // execute
@@ -27,12 +28,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
     const expected = [item1, item2]
 
@@ -49,12 +52,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!...',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up, y...',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
     const expected = [item1, item2]
 
@@ -66,15 +71,14 @@ describe('TodoList', () => {
     expect(todoList.showAll()).toEqual(expected)
   })
 
-
-
   it('sets item to be complete if found', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
 
     // execute
@@ -131,8 +135,18 @@ describe('TodoList', () => {
 
     // verify
     expect(result).toEqual([
-      { id: 1, text: 'my dog ate my homewo...', status: 'complete' },
-      { id: 2, text: 'my dog ate my homewo...', status: 'complete' }
+      {
+        id: 1,
+        text: 'my dog ate my homewo...',
+        status: 'complete',
+        date: new Date().toLocaleDateString('en-GB').slice(0, 10)
+      },
+      {
+        id: 2,
+        text: 'my dog ate my homewo...',
+        status: 'complete',
+        date: new Date().toLocaleDateString('en-GB').slice(0, 10)
+      }
     ])
   })
 
@@ -142,7 +156,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
 
     // execute
@@ -150,6 +165,28 @@ describe('TodoList', () => {
 
     // verify
     expect(result).toEqual(expected)
+  })
+  it('finds item by the date', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!')
+    const expected = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
+    }
+
+    // execute
+    const result = todoList.findByDate(item1.date)
+
+    // verify
+    expect(result).toEqual(expected)
+  })
+  it('findByDate throws error if not found', () => {
+    // set up
+
+    // execute, verify
+    expect(todoList.findByDate('15/06/2023')).toEqual([])
   })
 
   it('findBy throws error if not found', () => {
@@ -165,7 +202,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: new Date().toLocaleDateString('en-GB').slice(0, 10)
     }
 
     // execute
