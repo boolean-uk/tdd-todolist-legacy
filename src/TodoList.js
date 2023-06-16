@@ -5,8 +5,14 @@ class TodoList {
   }
 
   create(str) {
+    const date = new Date()
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      date: date.toLocaleDateString()
+    }
     this.items.push(item)
     return item
   }
@@ -15,7 +21,7 @@ class TodoList {
     if (this.items.length <= 1) {
       return this.items
     }
-    const clone = this.items.map((item)=> {
+    const clone = this.items.map((item) => {
       if (item.text.length > 20) {
         item.text = `${item.text.slice(0, 20)}...`
         return item

@@ -2,6 +2,7 @@ const TodoList = require('../src/TodoList.js')
 
 describe('TodoList', () => {
   let todoList
+  const date = new Date()
 
   beforeEach(() => {
     todoList = new TodoList()
@@ -12,7 +13,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: date.toLocaleDateString()
     }
 
     // execute
@@ -27,17 +29,20 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: date.toLocaleDateString()
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: date.toLocaleDateString()
     }
     const item3 = {
       id: 3,
       text: 'Go to the Winchester...',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: date.toLocaleDateString()
     }
     const expected = [item1, item2, item3]
 
@@ -57,7 +62,8 @@ describe('TodoList', () => {
     const item = {
       id: 1,
       text: 'Go to the Winchester, have a pint, and wait for all this to blow over',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: date.toLocaleDateString()
     }
     const expected = [item]
 
@@ -76,7 +82,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: date.toLocaleDateString()
     }
 
     // execute
@@ -127,7 +134,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: date.toLocaleDateString()
     }
 
     // execute
@@ -150,7 +158,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: date.toLocaleDateString()
     }
 
     // execute
@@ -166,5 +175,23 @@ describe('TodoList', () => {
 
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
+  })
+
+  it('gets items by date', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!')
+
+    const expected = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'incomplete',
+      date: date.toLocaleDateString()
+    }
+
+    // execute
+    const result = todoList.getByDate(item1.id)
+
+    // verify
+    expect(result).toEqual(expected)
   })
 })
