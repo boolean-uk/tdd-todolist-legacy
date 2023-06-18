@@ -9,11 +9,15 @@ describe('TodoList', () => {
   describe('TodoList.create', () => {
     it('creates a todo item', () => {
       // set up
+      const todaysDate = new Date()
+      const dateString = `${todaysDate.getFullYear()}-${
+        todaysDate.getMonth() + 1
+      }-${todaysDate.getDate()}`
       const expected = {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: "2023-6-16"
+        date: dateString
       }
 
       // execute
@@ -26,17 +30,21 @@ describe('TodoList', () => {
   describe('showAll()', () => {
     it('returns all items', () => {
       // set up
+      const todaysDate = new Date()
+      const dateString = `${todaysDate.getFullYear()}-${
+        todaysDate.getMonth() + 1
+      }-${todaysDate.getDate()}`
       const item1 = {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: "2023-6-16"
+        date: dateString
       }
       const item2 = {
         id: 2,
         text: 'Do the washing up',
         status: 'incomplete',
-        date: "2023-6-16"
+        date: dateString
       }
 
       // execute
@@ -49,9 +57,23 @@ describe('TodoList', () => {
     })
     it('if item text is more than 20 char , it should show only the first 20 char and ...', () => {
       // set up
+      const todaysDate = new Date()
+      const dateString = `${todaysDate.getFullYear()}-${
+        todaysDate.getMonth() + 1
+      }-${todaysDate.getDate()}`
       const expected = [
-        { id: 1, text: 'Hello world how are ...', status: 'incomplete', date: "2023-6-16" },
-        { id: 2, text: 'Do the washing up no...', status: 'incomplete', date: "2023-6-16" }
+        {
+          id: 1,
+          text: 'Hello world how are ...',
+          status: 'incomplete',
+          date: dateString
+        },
+        {
+          id: 2,
+          text: 'Do the washing up no...',
+          status: 'incomplete',
+          date: dateString
+        }
       ]
 
       // execute
@@ -65,12 +87,16 @@ describe('TodoList', () => {
   describe('setComplete()', () => {
     it('sets item to be complete if found', () => {
       // set up
+      const todaysDate = new Date()
+      const dateString = `${todaysDate.getFullYear()}-${
+        todaysDate.getMonth() + 1
+      }-${todaysDate.getDate()}`
       const item1 = todoList.create('turn the heating on!')
       const expected = {
         id: 1,
         text: 'turn the heating on!',
         status: 'complete',
-        date: "2023-6-16"
+        date: dateString
       }
 
       // execute
@@ -119,12 +145,16 @@ describe('TodoList', () => {
   describe('findBy()', () => {
     it('finds item by id', () => {
       // set up
+      const todaysDate = new Date()
+      const dateString = `${todaysDate.getFullYear()}-${
+        todaysDate.getMonth() + 1
+      }-${todaysDate.getDate()}`
       const item1 = todoList.create('turn the heating on!')
       const expected = {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: "2023-6-16"
+        date: dateString
       }
 
       // execute
@@ -144,12 +174,16 @@ describe('TodoList', () => {
   describe('deleteBy()', () => {
     it('deletes item by id', () => {
       // set up
+      const todaysDate = new Date()
+      const dateString = `${todaysDate.getFullYear()}-${
+        todaysDate.getMonth() + 1
+      }-${todaysDate.getDate()}`
       const item1 = todoList.create('turn the heating on!')
       const expected = {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: "2023-6-16"
+        date: dateString
       }
 
       // execute
@@ -165,6 +199,31 @@ describe('TodoList', () => {
 
       // execute, verify
       expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
+    })
+  })
+  describe('itemByDay', () => {
+    it('all items with same day will be shown', () => {
+      const todaysDate = new Date()
+      const item1 = todoList.create('turn the heating on!')
+      const item2 = todoList.create('figure out what we will be doing today')
+      const expected = [item1, item2]
+      expect(
+        todoList.itemByDay(
+          todaysDate.getFullYear(),
+          todaysDate.getMonth() + 1,
+          todaysDate.getDate()
+        )
+      ).toEqual(expected)
+    })
+    it('no items found on chosen day', () => {
+      const todaysDate = new Date()
+      expect(
+        todoList.itemByDay(
+          todaysDate.getFullYear(),
+          todaysDate.getMonth() + 1,
+          todaysDate.getDate()
+        )
+      ).toEqual([])
     })
   })
 })
