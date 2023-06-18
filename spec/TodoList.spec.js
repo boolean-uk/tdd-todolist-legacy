@@ -2,6 +2,7 @@ const TodoList = require('../src/TodoList')
 
 describe('TodoList', () => {
   let todoList
+  const date = new Date()
 
   beforeEach(() => {
     todoList = new TodoList()
@@ -12,7 +13,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: date.toLocaleDateString()
     }
 
     // execute
@@ -27,12 +29,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: date.toLocaleDateString()
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: date.toLocaleDateString()
     }
     const expected = [item1, item2]
 
@@ -50,7 +54,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      created: date.toLocaleDateString()
     }
 
     // execute
@@ -100,7 +105,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: date.toLocaleDateString()
     }
 
     // execute
@@ -123,7 +129,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: date.toLocaleDateString()
     }
 
     // execute
@@ -136,8 +143,34 @@ describe('TodoList', () => {
 
   it('delete throws error if not found', () => {
     // set up
-
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
+  })
+
+  it('gets items by date', () => {
+    todoList.create('Everyone was busy, so I went to the movie alone!')
+    todoList.create('Everyone was not busy, so I went to the movie with them!')
+    todoList.items[1].date = ''
+
+    const expected = [
+      {
+        id: 1,
+        text: 'turn the heating on!',
+        status: 'incomplete',
+        created: date.toLocaleDateString()
+      }
+    ]
+    const result = todoList.getByDate(date.toLocaleDateString())
+
+    expect(result).toEqual(expected)
+  })
+
+  it('if there are no todos for that day, show an empty list', () => {
+    todoList.create('turn the heating on!')
+
+    const expected = []
+    const result = todoList.getByDate('01/01/2000')
+
+    expect(result).toEqual(expected)
   })
 })
