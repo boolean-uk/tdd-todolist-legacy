@@ -53,10 +53,10 @@ class TodoList {
   }
 }
 
-const todos = new TodoList()
-todos.create('turn the living room heating on!')
-todos.create('Do laundry')
-todos.displayAllItems()
+// const todos = new TodoList()
+// todos.create('turn the living room heating on!')
+// todos.create('Do laundry')
+// todos.displayAllItems()
 // const date = new Date().toISOString().slice(0, 10)
 // console.log(date)
 

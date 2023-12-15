@@ -144,7 +144,7 @@ describe('TodoList', () => {
     beforeEach(() => {
       todoList = new TodoList()
     })
-    it('/ There are items in the list, displaying all items text no longer than 20 characters', () => {
+    it('/ There are multiple items in the list, displaying all items text no longer than 20 characters', () => {
       todoList.items = [
         {
           id: 1,
@@ -168,6 +168,17 @@ describe('TodoList', () => {
         'do the laundry',
         'pet the cat'
       ])
+    })
+    it('/ there is one item in the list and the items length is longer than 20 character. Display entire length', () => {
+      todoList.items = [
+        {
+          id: 1,
+          text: 'turn the living room heating on!',
+          status: 'complete'
+        }
+      ]
+      const result = todoList.displayAllItemsText()
+      expect(result).toEqual(['turn the living room heating on!'])
     })
   })
 })
