@@ -14,11 +14,6 @@
 
 ## Requirements
 
-| Method | Input | Data | Scenario | Output |
-| ------ | ----- | ---- | -------- | ------ |
-
-|showAll() | item(@obj) | text: @string, id: @number, status: @string | if text.length > 20 | show text char from 0 to 20
-
 ## part 1
 
 Show only the first 20chars when displaying all items
@@ -28,15 +23,15 @@ Show only the first 20chars when displaying all items
 
 # Method
 
-minimizeText()
+ShowAll()
 
 # Input
 
-item(@obj) => text: @string, id: @number, status: @string
+item(@obj) => text: @string, id: @number, status: @string, date: @string
 
 # Scenario
 
-if text.length > 20
+if text.length > 20 otherwise show full length of text
 
 # Output
 
@@ -45,5 +40,22 @@ show text char from 0 to 20
 ## part 2
 
 2. To do items have dates when they were created.
+
 - A user can search todo items by day and see a list of todo items by the day they were created.
-- If there are no todos for that day, show an empty list 
+- If there are no todos for that day, show an empty list
+
+# Method
+
+findByDate()
+
+# Input
+
+item(@ting) => year-month-day
+
+# Scenario
+
+when date is passed into the findByDate function
+
+# Output
+
+return item created on same day that was passed into function otherwise return empty string

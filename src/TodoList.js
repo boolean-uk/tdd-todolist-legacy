@@ -54,17 +54,6 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 
-  // findByDate(date) {
-  //   this.items.filter((item) => {
-  //     if (item.date = date) {
-  //       return []
-  //     } else {
-  //       return (item.date = date)
-  //     }
-  //   })
-
-  //   return this.items
-  // }
   findByDate(date) {
     let result = []
 
