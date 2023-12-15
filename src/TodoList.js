@@ -28,7 +28,10 @@ class TodoList {
 
   setComplete (id) {
     const item = this.findBy(id)
-    item.status = 'complete'
+    if (item.status === 'incomplete') {
+      item.status = 'complete'
+    }
+    else item.status = 'incomplete'
     return item
   }
 
@@ -64,5 +67,14 @@ class TodoList {
     }
   }
 }
+
+// const todo = new TodoList()
+// todo.create('turn the heating on!')
+// console.log('before:', todo.setComplete(1))
+// todo.create('Do the washing up')
+// console.log('after:', todo.setComplete(1))
+// todo.setComplete(1)
+// console.log(todo.setComplete(1))
+// console.log('show all:', todo.showAll())
 
 module.exports = TodoList
