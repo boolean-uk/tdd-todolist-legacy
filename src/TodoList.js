@@ -11,13 +11,14 @@ class TodoList {
     return item
   }
 
-  showAll(id) {
-    const item = this.findBy(id)
-    if (item.length > 20) {
-      return item.substring(0, 20) + '...'
-    } else {
-      return item
-    }
+  showAll() {
+    return this.items.map((item) => {
+      if (item.text.length > 20) {
+        return { ...item, text: item.text.substring(0, 20) + '...' }
+      } else {
+        return item
+      }
+    })
   }
 
   setComplete(id) {
