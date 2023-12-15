@@ -7,12 +7,16 @@ describe('TodoList', () => {
     todoList = new TodoList()
   })
 
+  const expectedDate1 = new Date(15, 12, 2023)
+  const expectDated2 = new Date(10, 12, 2023)
+
   it('creates a todo item', () => {
     // set up
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: expectedDate1
     }
 
     // execute
@@ -27,12 +31,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: expectedDate1
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: expectDated2
     }
     const expected = [item1, item2]
 
@@ -50,7 +56,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: expectedDate1
     }
 
     // execute
@@ -101,7 +108,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: expectedDate1
     }
 
     // execute
@@ -124,7 +132,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: expectedDate1
     }
 
     // execute
