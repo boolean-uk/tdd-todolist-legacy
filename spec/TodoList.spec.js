@@ -178,7 +178,7 @@ describe('TodoList', () => {
         }
       ]
       const result = todoList.displayAllItemsText()
-      expect(result).toEqual(['turn the living room heating on!'])
+      expect(result).toEqual('turn the living room heating on!')
     })
   })
 })

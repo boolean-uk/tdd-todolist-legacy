@@ -21,6 +21,9 @@ class TodoList {
   }
 
   displayAllItemsText() {
+    if (this.items.length === 1) {
+      return this.items[0].text
+    }
     const itemsText = this.items.map((item) => {
       if (item.text.length <= 20) {
         return item.text
