@@ -58,12 +58,9 @@ class TodoList {
     // else check if there are multiple todos w/ same date
     else {
       // only one todo - return todo with full length text
-      if (checkDateArr.length === 1) {
-        return checkDateArr
-        // multiple todos - return all todos with this date with shortened text
-      } else {
-        return this.showAll().filter(item => item.date === date)
-      }
+      if (checkDateArr.length === 1) return checkDateArr
+      // multiple todos - return all todos with this date with shortened text
+      else return this.showAll().filter(item => item.date === date)
     }
   }
 }
