@@ -150,13 +150,4 @@ describe('TodoList', () => {
     // verify
     expect(result).toEqual('buy Christmas presen...')
   })
-
-  xit('display item text when displaying one item', () => {
-    // set up
-    todoList.create('buy Christmas presents for the in-laws')
-    // execute
-    const result = todoList.displaySummary()
-    // verify
-    expect(result).toBe('buy Christmas presents for the in-laws')
-  })
 })
