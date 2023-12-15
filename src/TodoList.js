@@ -21,6 +21,7 @@ class TodoList {
   }
 
   displayAllItemsText() {
+    if (!this.items || this.items.length === 0) return 'No todo items'
     if (this.items.length === 1) {
       return this.items[0].text
     }
