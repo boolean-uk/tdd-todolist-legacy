@@ -30,7 +30,7 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete', 
+      status: 'incomplete',
       date: `${currentDate}`
     }
     const item2 = {
@@ -167,5 +167,39 @@ describe('TodoList', () => {
     const result = todoList.displaySummary(item1)
     // verify
     expect(result).toEqual('buy Christmas presen...')
+  })
+
+  it('finds items by their date', () => {
+    const item1 = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'incomplete',
+      date: '2021-20-28'
+    }
+    const item2 = {
+      id: 2,
+      text: 'do the washing up',
+      status: 'incomplete',
+      date: '1992-01-04'
+    }
+    const item3 = {
+      id: 3,
+      text: 'feed the dog',
+      status: 'incomplete',
+      date: '2023-28-11'
+    }
+    const item4 = {
+      id: 4,
+      text: 'tidy up',
+      status: 'incomplete',
+      date: '1992-01-04'
+    }
+    todoList.push(item1)
+    todoList.push(item2)
+    todoList.push(item3)
+    todoList.push(item4)
+
+    const result = todoList.findByDate('1992-01-04')
+    expect(result).toEqual([item1, item4])
   })
 })
