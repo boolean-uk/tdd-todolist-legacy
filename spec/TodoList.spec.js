@@ -45,27 +45,29 @@ describe("TodoList", () => {
     expect(result).toEqual(expected)
   })
 
-  it("sets item to be complete if found", () => {
-    // set up
-    const expected = {
-      id: 1,
-      text: "turn the heating on!",
-      status: "complete"
-    }
-
-    // execute
-    todoList.create("turn the heating on!")
-    const result = todoList.setComplete(1)
-
-    // verify
-    expect(result).toEqual(expected)
-  })
-
-  it("throws error if not found", () => {
-    // set up
-
-    // execute, verify
-    expect(() => todoList.setComplete(1)).toThrowError("Item not found")
+  describe('Set complete status', () => {
+    it("sets item to be complete if found", () => {
+      // set up
+      const expected = {
+        id: 1,
+        text: "turn the heating on!",
+        status: "complete"
+      }
+  
+      // execute
+      todoList.create("turn the heating on!")
+      const result = todoList.setComplete(1)
+  
+      // verify
+      expect(result).toEqual(expected)
+    })
+  
+    it("throws error if item is not found", () => {
+      // set up
+  
+      // execute, verify
+      expect(() => todoList.setComplete(1)).toThrowError("Item not found")
+    })
   })
 
   it("gets incomplete items", () => {
