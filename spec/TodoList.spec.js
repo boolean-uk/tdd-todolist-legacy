@@ -217,7 +217,7 @@ describe("TodoList", () => {
     })
   })
 
-  xdescribe('Update item text', () => {
+  describe('Update item text', () => {
     it('updateText finds the selected todo by id and updates the text to user input', () => {
       // set
       const expected = {
@@ -228,7 +228,7 @@ describe("TodoList", () => {
       }
       
       // execute
-      todoList.create("turn the heating on!")
+      todoList.create(new TodoItem("turn the heating on!"))
       const result = todoList.updateText(1, "Walk the dog")
 
       // verify
