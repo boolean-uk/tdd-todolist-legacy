@@ -53,8 +53,8 @@ class TodoList {
   }
 
   findTodoByDate(date) {
-    if (!date || date.length === 0)
-      return 'Please enter a date using numbers in format of YYYY-MM-DD'
+    if (!date || date.length === 0 || typeof date === 'number')
+      return 'Please enter a date using numbers in format of "YYYY-MM-DD"'
     const todosByDate = this.items.filter((item) => item.date === date)
     return todosByDate
   }
@@ -67,8 +67,6 @@ class TodoList {
 }
 
 const todos = new TodoList()
-todos.create('turn the living room heating on!')
-todos.create('Do laundry')
-todos.findTodoByDate('2023-12-15')
+console.log(todos.findTodoByDate('2023-12-15'))
 
 module.exports = TodoList
