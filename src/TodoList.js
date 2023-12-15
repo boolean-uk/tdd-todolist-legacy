@@ -20,6 +20,16 @@ class TodoList {
     return this.items
   }
 
+  displayAllItemsText() {
+    const itemsText = this.items.map((item) => {
+      if (item.text.length <= 20) {
+        return item.text
+      }
+      return item.text.slice(0, 20) + '...'
+    })
+    return itemsText
+  }
+
   setComplete(id) {
     const item = this.findBy(id)
     item.status = 'complete'
@@ -43,6 +53,10 @@ class TodoList {
   }
 }
 
+const todos = new TodoList()
+todos.create('turn the living room heating on!')
+todos.create('Do laundry')
+todos.displayAllItems()
 // const date = new Date().toISOString().slice(0, 10)
 // console.log(date)
 

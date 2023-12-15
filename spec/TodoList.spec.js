@@ -162,7 +162,7 @@ describe('TodoList', () => {
           status: 'incomplete'
         }
       ]
-      const result = displayAllItems()
+      const result = todoList.displayAllItemsText()
       expect(result).toEqual([
         'turn the living room...',
         'do the laundry',
