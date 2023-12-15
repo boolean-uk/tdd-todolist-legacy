@@ -8,7 +8,7 @@ describe("TodoList", () => {
     setId(1)
   })
 
-  it("creates a todo item", () => {
+  it("create() creates a todo item", () => {
     // set up
     const expected = {
       id: 1,
@@ -18,39 +18,39 @@ describe("TodoList", () => {
     }
 
     // execute
-    const item1 = new TodoItem("turn the heating on!")
-    const result = todoList.create(item1)
+    const result = todoList.create(new TodoItem("turn the heating on!"))
 
     // verify
     expect(result).toEqual(expected)
   })
 
-  xit("returns all items", () => {
+  it("showAll() returns all items", () => {
     // set up
-    const item1 = {
-      id: 1,
-      text: "turn the heating on!",
-      status: "incomplete",
-      date: '15/12/2023'
-    }
-    const item2 = {
-      id: 2,
-      text: "Do the washing up",
-      status: "incomplete",
-      date: '15/12/2023'
-    }
-    const item3 = {
-      id: 3,
-      text: "Do the laundry at ex...",
-      status: "incomplete",
-      date: '15/12/2023'
-    }
-    const expected = [item1, item2, item3]
+    const expected = [
+      {
+        id: 1,
+        text: "turn the heating on!",
+        status: "incomplete",
+        date: '15/12/2023'
+      },
+      {
+        id: 2,
+        text: "Do the washing up",
+        status: "incomplete",
+        date: '15/12/2023'
+      },
+      {
+        id: 3,
+        text: "Do the laundry at ex...",
+        status: "incomplete",
+        date: '15/12/2023'
+      }
+    ]
 
     // execute
-    todoList.create("turn the heating on!")
-    todoList.create("Do the washing up")
-    todoList.create("Do the laundry at exactly 9am")
+    todoList.create(new TodoItem("turn the heating on!"))
+    todoList.create(new TodoItem("Do the washing up"))
+    todoList.create(new TodoItem("Do the laundry at exactly 9am"))
     const result = todoList.showAll()
 
     // verify

@@ -87,14 +87,4 @@ class TodoList {
   }
 }
 
-const newTodoList = new TodoList()
-const newTodo1 = new TodoItem('hi')
-// console.log(newTodoList)
-// const newTodo2 = new ToDoItem('bye')
-// const newTodo3 = new ToDoItem('cook')
-newTodoList.create(newTodo1)
-// newTodoList.addItemToList(newTodo2)
-// newTodoList.addItemToList(newTodo3)
-console.log(newTodoList.showAll())
-
 module.exports = { TodoList, TodoItem, setId }
