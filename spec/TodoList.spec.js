@@ -143,7 +143,7 @@ describe('TodoList', () => {
 
     // verify
     expect(deletedItem).toEqual(expected)
-    expect(todoList.showAll()).toEqual([])
+    expect(todoList.getAll()).toEqual([])
   })
 
   it('delete throws error if not found', () => {

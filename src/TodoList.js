@@ -11,7 +11,7 @@ class TodoList {
     return item
   }
 
-  showAll() {
+  getAll() {
     return this.items
   }
 
