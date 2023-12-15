@@ -4,6 +4,7 @@ class TodoList {
     this.items = []
   }
 
+  //  created: new Date().toISOString().slice(0, 10)
   create (str) {
     this.id++
     const item = { id: this.id, text: str, status: 'incomplete' }
@@ -12,7 +13,12 @@ class TodoList {
   }
 
   showAll () {
-    return this.items
+    return this.items.map((item) => {
+      return {
+        ...item,
+        text: item.text.length > 20 ? item.text.slice(0, 19) + "…" : item.text
+      }
+    })
   }
 
   setComplete (id) {
