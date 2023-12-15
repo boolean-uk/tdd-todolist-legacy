@@ -245,5 +245,11 @@ describe('TodoList', () => {
       const result = todoList.findTodoByDate('2023-12-14')
       expect(result).toEqual(expectation)
     })
+    it('/ if parameter is left empty', () => {
+      const result = todoList.findTodoByDate()
+      expect(result).toEqual(
+        'please enter a date using numbers in format of YYYY-MM-DD'
+      )
+    })
   })
 })
