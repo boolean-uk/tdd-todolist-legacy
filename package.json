@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx jasmine"
+    "test": "npx jasmine",
+    "test-watch": "npx nodemon --exec jasmine"
   },
   "author": "",
   "license": "ISC",
