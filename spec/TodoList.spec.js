@@ -6,7 +6,6 @@ describe('TodoList', () => {
   beforeEach(() => {
     todoList = new TodoList()
   })
-
   it('creates a todo item', () => {
     // set up
     const expected = {
@@ -140,5 +139,35 @@ describe('TodoList', () => {
 
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
+  })
+  describe('/ display all items method', () => {
+    beforeEach(() => {
+      todoList = new TodoList()
+    })
+    it('/ There are items in the list, displaying all items text no longer than 20 characters', () => {
+      todoList.items = [
+        {
+          id: 1,
+          text: 'turn the living room heating on!',
+          status: 'complete'
+        },
+        {
+          id: 2,
+          text: 'do the laundry',
+          status: 'incomplete'
+        },
+        {
+          id: 3,
+          text: 'pet the cat',
+          status: 'incomplete'
+        }
+      ]
+      const result = displayAllItems()
+      expect(result).toEqual([
+        'turn the living room...',
+        'do the laundry',
+        'pet the cat'
+      ])
+    })
   })
 })
