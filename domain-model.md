@@ -13,3 +13,5 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
 | | | getByDate(@String) | | date is valid | array, filtered by date| `getByDate('15/12/2023) => {id: 1, text: "hello", status: "incomplete, date: "15/12/2023"}`
 | | | | | date is not valid | thrown error | `getByDate('15/12/2023) => "Item not found, search by date format DD/MM/YYYY"`
+| | | updateText(@int, @String) | finds item by id and updates text | item exists & text valid | todo item | `updateText(1, "Walk the dog") => {id: 1, text: "Walk the dog", status: "incomplete", date: "15/12/2023"}`
+| | | | | item does not exist or text is not valid | thrown error | `updateText(1, 98) => "unable to process, make sure id is an Integer and text is a String"`
