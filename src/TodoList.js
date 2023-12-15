@@ -21,7 +21,7 @@ class TodoList {
   }
 
   displayAllSummaries() {
-    const summaries = this.items.map((item) => this.displaySummary(item))
+    const summaries = this.items.map(this.displaySummary)
 
     return summaries
   }
