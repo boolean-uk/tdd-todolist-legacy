@@ -181,7 +181,7 @@ describe("TodoList", () => {
       }]
 
       // execute
-      const result = todoList.getByData('15/12/2023')
+      const result = todoList.getByDate('15/12/2023')
 
       // verify
       expect(result).toEqual(expected)
@@ -191,7 +191,7 @@ describe("TodoList", () => {
       // set up
 
       // execute/verify
-      expect(() => todoList.getByStatus().toThrowError("Item not found, search by date format DD/MM/YYYY"))
+      expect(() => todoList.getByDate().toThrowError("Item not found, search by date format DD/MM/YYYY"))
     })
   })
   
