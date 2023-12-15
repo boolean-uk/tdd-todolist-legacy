@@ -13,7 +13,7 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | | | item does not exist | thrown error | `findBy(1) => thrown error "Item not Found"`
 | | | deleteBy(@Int) | finds item, then removes it from array | item exists | item | `deleteBy(@Int) => {id: 1, text: "hello", status: "incomplete", date: "2023-12-15"}`
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
-|||findTodoByDate()|method will map through all matching items based on the parameter and display the full item.|date does exist in array|the items | `findTodoByDate(2023-12-15) => {id: 1, text: "Do laundry", status: "incomplete", date: "2023-12-15"}`
+|||findTodoByDate(@string)|method will map through all matching items based on the parameter and display the full item.|date does exist in array|the items | `findTodoByDate(2023-12-15) => {id: 1, text: "Do laundry", status: "incomplete", date: "2023-12-15"}`
 |||||date does not exist | returns a message stating no todos exist on this day| `findTodoByDate(2024-12-15) => "No todos exist on this date."`
 |||||parameter entered is not a valid date type.|returns a string message stating "please enter a valid date!"| `findTodoByDate(20XX-DEC-15) => "please enter a valid date!"`
 |||displayAllItemsText()|method should return all todo items texts with a max character size of 20. If there is only 1 item. display full size of text.| There are items in the todos list array |returns an array with todo items |`displayAllItemsText() => ["Do laundry", "Go to the store and ..."]`

@@ -197,4 +197,52 @@ describe('TodoList', () => {
       expect(result).toEqual('No todo items')
     })
   })
+  describe('/ find by date method', () => {
+    beforeEach(() => {
+      todoList = [
+        {
+          id: 1,
+          text: 'turn the living room heating on!',
+          status: 'complete',
+          date: '2023-12-13'
+        },
+        {
+          id: 2,
+          text: 'do the laundry',
+          status: 'incomplete',
+          date: '2023-12-14'
+        },
+        {
+          id: 3,
+          text: 'pet the cat',
+          status: 'incomplete',
+          date: '2023-12-14'
+        },
+        {
+          id: 4,
+          text: 'pet the dog',
+          status: 'incomplete',
+          date: '2023-12-15'
+        }
+      ]
+    })
+    it(' / find todo by date returns a list of todos with the same date as entered in parameter.', () => {
+      const expectation = [
+        {
+          id: 2,
+          text: 'do the laundry',
+          status: 'incomplete',
+          date: '2023-12-14'
+        },
+        {
+          id: 3,
+          text: 'pet the cat',
+          status: 'incomplete',
+          date: '2023-12-14'
+        }
+      ]
+      const result = findTodoByDate('2023-12-14')
+      expect(result).toEqual(expectation)
+    })
+  })
 })
