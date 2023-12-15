@@ -194,12 +194,46 @@ describe('TodoList', () => {
       status: 'incomplete',
       date: '1992-01-04'
     }
-    todoList.push(item1)
-    todoList.push(item2)
-    todoList.push(item3)
-    todoList.push(item4)
+    todoList.items.push(item1)
+    todoList.items.push(item2)
+    todoList.items.push(item3)
+    todoList.items.push(item4)
 
     const result = todoList.findByDate('1992-01-04')
-    expect(result).toEqual([item1, item4])
+    expect(result).toEqual([item2, item4])
+  })
+
+  it('no items match this date', () => {
+    const item1 = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'incomplete',
+      date: '2021-20-28'
+    }
+    const item2 = {
+      id: 2,
+      text: 'do the washing up',
+      status: 'incomplete',
+      date: '1992-01-04'
+    }
+    const item3 = {
+      id: 3,
+      text: 'feed the dog',
+      status: 'incomplete',
+      date: '2023-28-11'
+    }
+    const item4 = {
+      id: 4,
+      text: 'tidy up',
+      status: 'incomplete',
+      date: '1992-01-04'
+    }
+    todoList.items.push(item1)
+    todoList.items.push(item2)
+    todoList.items.push(item3)
+    todoList.items.push(item4)
+
+    const result = todoList.findByDate('2007-11-23')
+    expect(result).toEqual([])
   })
 })

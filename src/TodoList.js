@@ -57,6 +57,11 @@ class TodoList {
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
+
+  findByDate(date) {
+    const itemsFound = this.items.filter((item) => item.date === date)
+    return itemsFound
+  }
 }
 
 module.exports = TodoList
