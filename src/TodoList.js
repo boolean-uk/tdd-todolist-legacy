@@ -1,3 +1,5 @@
+const DateStamp = () => new Date().toISOString().slice(0, 10)
+
 class TodoList {
   constructor () {
     this.id = 0
@@ -6,13 +8,18 @@ class TodoList {
 
   create (str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = { id: this.id, text: str, status: 'incomplete', created: DateStamp() }
     this.items.push(item)
     return item
   }
 
   showAll () {
-    return this.items
+    return this.items.map((item) => {
+      return {
+        ...item,
+        text: item.text.length > 20 ? item.text.slice(0, 19) + "…" : item.text
+      }
+    })
   }
 
   setComplete (id) {
@@ -31,6 +38,10 @@ class TodoList {
     return item
   }
 
+  filterByDate (dateStr) {
+    return this.items.filter(item => item.created === dateStr)
+  }
+
   deleteBy (id) {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
@@ -38,4 +49,4 @@ class TodoList {
   }
 }
 
-module.exports = TodoList
+module.exports = { TodoList, DateStamp }
