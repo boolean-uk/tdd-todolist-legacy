@@ -152,4 +152,13 @@ describe("TodoList", () => {
     expect(result).toBe(['buy Christmas presen...', 'do the dishes and th...'])
   } )
 
+
+  it("display item text when displaying one item", () => {
+    // set up
+    todoList.create('buy Christmas presents for the in-laws')
+    // execute
+    const result = todoList.displaySummary()
+    // verify
+    expect(result).toBe('buy Christmas presents for the in-laws')
+  } )
 })
