@@ -2,16 +2,19 @@ const TodoList = require('../src/TodoList.js')
 
 describe('TodoList', () => {
   let todoList
+  let todaysDate
 
   beforeEach(() => {
     todoList = new TodoList()
+    todaysDate = new Date().toISOString().slice(0, 10)
   })
   it('creates a todo item', () => {
     // set up
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${todaysDate}`
     }
 
     // execute
