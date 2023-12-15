@@ -31,12 +31,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on ...',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '15 Dec 2023'
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '15 Dec 2023'
     }
     const expected = [item1, item2]
 
@@ -54,7 +56,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: '15 Dec 2023'
     }
 
     // execute
@@ -105,7 +108,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '15 Dec 2023'
     }
 
     // execute
@@ -128,7 +132,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '15 Dec 2023'
     }
 
     // execute
