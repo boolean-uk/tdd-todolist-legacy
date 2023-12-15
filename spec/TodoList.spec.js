@@ -2,9 +2,11 @@ const TodoList = require('../src/TodoList.js')
 
 describe('TodoList', () => {
   let todoList
+  let currentDate
 
   beforeEach(() => {
     todoList = new TodoList()
+    currentDate = new Date().toISOString().slice(0, 10)
   })
 
   it('creates a todo item', () => {
@@ -12,7 +14,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${currentDate}`
     }
 
     // execute
@@ -27,12 +30,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete', 
+      date: `${currentDate}`
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${currentDate}`
     }
     const expected = [item1, item2]
 
@@ -60,7 +65,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: `${currentDate}`
     }
 
     // execute
@@ -111,7 +117,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${currentDate}`
     }
 
     // execute
@@ -134,7 +141,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${currentDate}`
     }
 
     // execute

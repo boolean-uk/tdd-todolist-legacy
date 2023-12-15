@@ -6,7 +6,7 @@ class TodoList {
 
   // unsure of how I could write a test to check that this is doing its job without set test needing to be updated daily (the hardcoded string to which the result would be compared would need to match the date at which the test is run)
   setCurrentDate() {
-    const currentDate = new Date().toISOString().slice(8, 18)
+    const currentDate = new Date().toISOString().slice(0, 10)
     return currentDate
   }
 
