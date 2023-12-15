@@ -99,8 +99,8 @@ describe('TodoList', () => {
 
   it('gets incomplete items', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
-    const item2 = todoList.create('Do the washing up')
+    const item1 = todoList.create('turn the heating on!', expectedDate)
+    const item2 = todoList.create('Do the washing up', expectedDate)
     todoList.setComplete(item1.id)
     const expected = [item2]
 
@@ -113,8 +113,8 @@ describe('TodoList', () => {
 
   it('gets complete items', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
-    const item2 = todoList.create('Do the washing up')
+    const item1 = todoList.create('turn the heating on!', expectedDate)
+    const item2 = todoList.create('Do the washing up', expectedDate)
     todoList.setComplete(item1.id)
     const expected = [item1]
 
