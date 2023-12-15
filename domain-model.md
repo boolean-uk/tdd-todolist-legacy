@@ -11,9 +11,8 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | | | item does not exist | thrown error | `findBy(1) => thrown error "Item not Found"`
 | | | deleteBy(@Int) | finds item, then removes it from array | item exists | item | `deleteBy(@Int) => {id: 1, text: "hello", status: "incomplete"}`
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
-| | | displaySummary(@String[]) | show only the first 20chars and adds ... at the end of that string | there is only one item in the list  / there are two items or more in the list | 20 char.-long string / item.text (as a string) 
+| | | displaySummary(@String[]) | show only the first 20chars and adds ... at the end of that string | there is only one item in the list  / there are two items or more in the list | 20 char.-long string / item.text (as a string)
 | | | findByDate(@String) | can search todo items by day | date exist / date does not exist or is invalid | a list of the todos matching that date / null (+ throw an error)
-
 
 ## requirements
 
@@ -24,4 +23,3 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 2. To do items have dates when they were created.
 - A user can search todo items by day and see a list of todo items by the day they were created.
 - If there are no todos for that day, show an empty list
-- 

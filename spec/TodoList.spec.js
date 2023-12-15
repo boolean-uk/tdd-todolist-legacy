@@ -141,4 +141,15 @@ describe("TodoList", () => {
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
   })
+
+  it("display item summaries when displaying all items", () => {
+    // set up
+    todoList.create('buy Christmas presents for the in-laws')
+    todoList.create('do the dishes and the laundry')
+    // execute
+    const result = todoList.displaySummary()
+    // verify
+    expect(result).toBe(['buy Christmas presen...', 'do the dishes and th...'])
+  } )
+
 })
