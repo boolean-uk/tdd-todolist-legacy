@@ -2,6 +2,7 @@ class TodoList {
   constructor () {
     this.id = 0
     this.items = []
+    this.itemsShortText = []
   }
 
   create (str) {
@@ -12,7 +13,17 @@ class TodoList {
   }
 
   showAll () {
-    return this.items
+    this.items.forEach(item => {
+      if (item.text.length > 20) {
+        item.text = `${item.text.substring(0, 20)}...`
+        this.itemsShortText.push(item)
+        return item
+      } else {
+        this.itemsShortText.push(item)
+        return item
+      }
+    }) 
+    return this.itemsShortText
   }
 
   setComplete (id) {
@@ -39,10 +50,12 @@ class TodoList {
 }
 
 const todoList = new TodoList()
-console.log(todoList.create('Do the washing up'))
-console.log(todoList.create('turn the heating on!'))
-console.log(todoList.setComplete(1))
-console.log(todoList.getByStatus('incomplete'))
+// todoList.create('Do the washing up')
+// todoList.create('turn the heating on!')
+// todoList.create("Do the laundry at exactly 9am")
+// console.log(todoList.setComplete(1))
+// console.log(todoList.getByStatus('incomplete'))
 // console.log(todoList.showAll())
+// todoList.showAll()
 
 module.exports = TodoList
