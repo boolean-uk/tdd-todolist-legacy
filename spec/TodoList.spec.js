@@ -101,11 +101,11 @@ describe("TodoList", () => {
     })
   })
 
-  xdescribe('Get item by completion status', () => {
+  describe('Get item by completion status', () => {
     it("gets incomplete items", () => {
       // set up
-      const item1 = todoList.create("turn the heating on!")
-      const item2 = todoList.create("Do the washing up")
+      const item1 = todoList.create(new TodoItem("turn the heating on!"))
+      const item2 = todoList.create(new TodoItem("Do the washing up"))
       todoList.setComplete(item1.id)
       const expected = [item2]
   
@@ -118,8 +118,8 @@ describe("TodoList", () => {
   
     it("gets complete items", () => {
       // set up
-      const item1 = todoList.create("turn the heating on!")
-      const item2 = todoList.create("Do the washing up")
+      const item1 = todoList.create(new TodoItem("turn the heating on!"))
+      const item2 = todoList.create(new TodoItem("Do the washing up"))
       todoList.setComplete(item1.id)
       const expected = [item1]
   
