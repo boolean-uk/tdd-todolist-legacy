@@ -20,7 +20,7 @@ describe('TodoList', () => {
     }
 
     // execute
-    const result = todoList.create('turn the heating on!')
+    const result = todoList.create('turn the heating on!', expectedDate1)
 
     // verify
     expect(result).toEqual(expected)
@@ -43,8 +43,8 @@ describe('TodoList', () => {
     const expected = [item1, item2]
 
     // execute
-    todoList.create('turn the heating on!')
-    todoList.create('Do the washing up')
+    todoList.create('turn the heating on!', expectedDate1)
+    todoList.create('Do the washing up', expectDated2)
 
     // verify
     expect(todoList.showAll()).toEqual(expected)

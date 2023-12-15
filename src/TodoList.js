@@ -4,9 +4,9 @@ class TodoList {
     this.items = []
   }
 
-  create(str) {
+  create(str, date) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = { id: this.id, text: str, status: 'incomplete', date: date }
     this.items.push(item)
     return item
   }
@@ -23,8 +23,10 @@ class TodoList {
 
   setComplete(id) {
     const item = this.findBy(id)
-    item.status = 'complete'
-    return item
+    if (item) {
+      item.status = 'complete'
+      return item
+    }
   }
 
   getByStatus(status) {
@@ -38,9 +40,11 @@ class TodoList {
   }
 
   deleteBy(id) {
-    const item = this.findBy(id)
-    const index = this.items.indexOf(item)
-    return this.items.splice(index, 1)[0]
+    const itemIndex = this.items.findIndex((item) => item.id === id)
+    if (itemIndex === -1) {
+      throw new Error('Item not found')
+    }
+    return this.items.splice(itemIndex, 1)[0]
   }
 }
 
