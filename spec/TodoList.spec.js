@@ -199,7 +199,8 @@ describe('TodoList', () => {
   })
   describe('/ find by date method', () => {
     beforeEach(() => {
-      todoList = [
+      todoList = new TodoList()
+      todoList.items = [
         {
           id: 1,
           text: 'turn the living room heating on!',
@@ -241,7 +242,7 @@ describe('TodoList', () => {
           date: '2023-12-14'
         }
       ]
-      const result = findTodoByDate('2023-12-14')
+      const result = todoList.findTodoByDate('2023-12-14')
       expect(result).toEqual(expectation)
     })
   })

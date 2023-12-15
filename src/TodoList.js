@@ -52,6 +52,11 @@ class TodoList {
     return item
   }
 
+  findTodoByDate(date) {
+    const todosByDate = this.items.filter((item) => item.date === date)
+    return todosByDate
+  }
+
   deleteBy(id) {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
@@ -62,6 +67,6 @@ class TodoList {
 const todos = new TodoList()
 todos.create('turn the living room heating on!')
 todos.create('Do laundry')
-console.log(todos.showAll())
+todos.findTodoByDate('2023-12-15')
 
 module.exports = TodoList
