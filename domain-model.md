@@ -11,3 +11,14 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | | | item does not exist | thrown error | `findBy(1) => thrown error "Item not Found"`
 | | | deleteBy(@Int) | finds item, then removes it from array | item exists | item | `deleteBy(@Int) => {id: 1, text: "hello", status: "incomplete"}`
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
+
+## requirements
+
+1. Show only the first 20chars when displaying all items
+- When seeing all the items, only show the first 20 chars of the item text, followed by '...'
+- However, when displaying single items, show the whole item text.
+
+2. To do items have dates when they were created.
+- A user can search todo items by day and see a list of todo items by the day they were created.
+- If there are no todos for that day, show an empty list
+- 
