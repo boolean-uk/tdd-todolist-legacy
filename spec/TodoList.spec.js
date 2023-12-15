@@ -100,27 +100,29 @@ describe("TodoList", () => {
     })
   })
 
-  it("finds item by id", () => {
-    // set up
-    const item1 = todoList.create("turn the heating on!")
-    const expected = {
-      id: 1,
-      text: "turn the heating on!",
-      status: "incomplete"
-    }
-
-    // execute
-    const result = todoList.findBy(item1.id)
-
-    // verify
-    expect(result).toEqual(expected)
-  })
-
-  it("findBy throws error if not found", () => {
-    // set up
-
-    // execute, verify
-    expect(() => todoList.findBy(1)).toThrowError("Item not found")
+  describe('Find item by id', () => {
+    it("finds item by id", () => {
+      // set up
+      const expected = {
+        id: 1,
+        text: "turn the heating on!",
+        status: "incomplete"
+      }
+  
+      // execute
+      todoList.create("turn the heating on!")
+      const result = todoList.findBy(1)
+  
+      // verify
+      expect(result).toEqual(expected)
+    })
+  
+    it("findBy throws error if not found", () => {
+      // set up
+  
+      // execute, verify
+      expect(() => todoList.findBy(1)).toThrowError("Item not found")
+    })
   })
 
   it("deletes item by id", () => {
