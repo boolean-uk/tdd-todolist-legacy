@@ -57,7 +57,7 @@ describe("TodoList", () => {
     expect(result).toEqual(expected)
   })
 
-  xdescribe('Set complete status', () => {
+  describe('Set complete status', () => {
     it("sets item to be 'complete' if found & status is currently 'incomplete'", () => {
       // set up
       const expected = {
@@ -68,7 +68,7 @@ describe("TodoList", () => {
       }
   
       // execute
-      todoList.create("turn the heating on!")
+      todoList.create(new TodoItem("turn the heating on!"))
       const result = todoList.setComplete(1)
   
       // verify
@@ -85,7 +85,7 @@ describe("TodoList", () => {
       }
   
       // execute
-      todoList.create("turn the heating on!")
+      todoList.create(new TodoItem("turn the heating on!"))
       todoList.setComplete(1)
       const result = todoList.setComplete(1)
   
