@@ -131,6 +131,15 @@ describe('TodoList', () => {
     expect(result).toEqual(expected)
   })
 
+  it("filtering for todays items finds todays items", () => {
+    const item1 = todoList.create("Do something")
+    const item2 = todoList.create("Do something else")
+
+    const expected = [item1, item2]
+
+    expect(todoList.filterByDate(DateStamp())).toEqual(expected)
+  })
+
   it('findBy throws error if not found', () => {
     // set up
 

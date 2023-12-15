@@ -38,6 +38,10 @@ class TodoList {
     return item
   }
 
+  filterByDate (dateStr) {
+    return this.items.filter(item => item.created === dateStr)
+  }
+
   deleteBy (id) {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
