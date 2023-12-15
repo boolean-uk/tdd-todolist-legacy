@@ -47,7 +47,6 @@ describe("TodoList", () => {
 
   it("sets item to be complete if found", () => {
     // set up
-    const item1 = todoList.create("turn the heating on!")
     const expected = {
       id: 1,
       text: "turn the heating on!",
@@ -55,7 +54,8 @@ describe("TodoList", () => {
     }
 
     // execute
-    const result = todoList.setComplete(item1.id)
+    todoList.create("turn the heating on!")
+    const result = todoList.setComplete(1)
 
     // verify
     expect(result).toEqual(expected)
