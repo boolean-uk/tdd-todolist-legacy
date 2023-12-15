@@ -6,7 +6,12 @@ class TodoList {
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete'
+    }
+
     this.items.push(item)
     return item
   }
@@ -37,5 +42,8 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 }
+
+// const date = new Date().toISOString().slice(0, 10)
+// console.log(date)
 
 module.exports = TodoList
