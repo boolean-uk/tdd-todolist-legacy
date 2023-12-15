@@ -250,4 +250,26 @@ describe('TodoList', () => {
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
   })
+
+  it("updates text and returns todo's text", () => {
+    const item1 = todoList.create('feed the tiger')
+    const expected = {
+      id: 1,
+      text: 'feed the cat',
+      status: 'incomplete',
+      created: '2023/12/15'
+    }
+
+    const result = todoList.updateText('feed the cat', 1)
+
+    expect(result).toEqual(expected)
+  })
+
+  it('update text throws error for invalid input', () => {
+    const item1 = todoList.create('feed the tiger')
+
+    expect(() => todoList.updateText(['updated text'], 1)).toThrowError(
+      "Please input a valid string & number e.g. ('Water the plants',1)"
+    )
+  })
 })
