@@ -149,6 +149,24 @@ describe('TodoList', () => {
     expect(result).toEqual(expected)
   })
 
+  it('sets item to be incomplete if found', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!')
+    const expected = {
+      id: 1,
+      text: 'turn the heating on!',
+      status: 'incomplete',
+      created: currentDate
+    }
+
+    // execute
+    const given = todoList.setComplete(item1.id)
+    const result = todoList.setIncomplete(item1.id)
+
+    // verify
+    expect(result).toEqual(expected)
+  })
+
   it('throws error if not found', () => {
     // set up
 
