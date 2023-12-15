@@ -27,26 +27,14 @@ describe('TodoList', () => {
 
   it('returns all items', () => {
     // set up
-    const item1 = {
-      id: 1,
-      text: 'turn the heating on!',
-      status: 'incomplete',
-      date: `${currentDate}`
-    }
-    const item2 = {
-      id: 2,
-      text: 'Do the washing up',
-      status: 'incomplete',
-      date: `${currentDate}`
-    }
+    const item1 = todoList.create('turn the heating on!')
+    const item2 = todoList.create('Do the washing up')
     const expected = [item1, item2]
 
     // execute
-    todoList.create('turn the heating on!')
-    todoList.create('Do the washing up')
-
+    const result = todoList.getAll()
     // verify
-    expect(todoList.getAll()).toEqual(expected)
+    expect(result).toEqual(expected)
   })
 
   it('display all summaries', () => {
