@@ -226,7 +226,8 @@ describe("TodoList", () => {
       }
       
       // execute
-      const result = todoList.updateText("Walk the dog")
+      todoList.create("turn the heating on!")
+      const result = todoList.updateText(1, "Walk the dog")
 
       // verify
       expect(result).toEqual(expected)

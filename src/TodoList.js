@@ -63,15 +63,13 @@ class TodoList {
       else return this.showAll().filter(item => item.date === date)
     }
   }
-}
 
-// const todo = new TodoList()
-// todo.create('turn the heating on!')
-// console.log('before:', todo.setComplete(1))
-// todo.create('Do the washing up')
-// console.log('after:', todo.setComplete(1))
-// todo.setComplete(1)
-// console.log(todo.setComplete(1))
-// console.log('show all:', todo.showAll())
+  updateText(id, text) {
+    const itemToUpdate = this.items.find(item => item.id === id)
+    if (itemToUpdate === undefined || typeof text !== 'string') throw new Error ('unable to process, make sure id is an Integer and text is a String')
+    itemToUpdate.text = text
+    return itemToUpdate
+  }
+}
 
 module.exports = TodoList
