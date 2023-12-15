@@ -150,4 +150,14 @@ describe('TodoList', () => {
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
   })
+
+  it('get items by date', () => {
+    const item1 = todoList.create("today's date")
+    const item2 = todoList.create("not today's date")
+    item2.date = '17 Dec 2023'
+
+    const result = todoList.getByDate('15 Dec 2023')
+
+    expect(result).toEqual([item1])
+  })
 })
