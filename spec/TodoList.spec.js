@@ -141,8 +141,8 @@ describe('TodoList', () => {
   })
 
   it("no results for date returns empty array", () => {
-    const item1 = todoList.create("Do something")
-    const item2 = todoList.create("Do something else")
+    todoList.create("Do something")
+    todoList.create("Do something else")
 
     expect(todoList.filterByDate("Definitely not a valid date")).toEqual([])
   })
