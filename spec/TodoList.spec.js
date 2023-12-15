@@ -29,12 +29,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${todaysDate}`
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${todaysDate}`
     }
     const expected = [item1, item2]
 
@@ -52,7 +54,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: `${todaysDate}`
     }
 
     // execute
@@ -103,7 +106,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${todaysDate}`
     }
 
     // execute
@@ -126,7 +130,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${todaysDate}`
     }
 
     // execute
@@ -152,17 +157,20 @@ describe('TodoList', () => {
         {
           id: 1,
           text: 'turn the living room heating on!',
-          status: 'complete'
+          status: 'complete',
+          date: `${todaysDate}`
         },
         {
           id: 2,
           text: 'do the laundry',
-          status: 'incomplete'
+          status: 'incomplete',
+          date: `${todaysDate}`
         },
         {
           id: 3,
           text: 'pet the cat',
-          status: 'incomplete'
+          status: 'incomplete',
+          date: `${todaysDate}`
         }
       ]
       const result = todoList.displayAllItemsText()
@@ -177,7 +185,8 @@ describe('TodoList', () => {
         {
           id: 1,
           text: 'turn the living room heating on!',
-          status: 'complete'
+          status: 'complete',
+          date: `${todaysDate}`
         }
       ]
       const result = todoList.displayAllItemsText()

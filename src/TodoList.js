@@ -6,10 +6,12 @@ class TodoList {
 
   create(str) {
     this.id++
+    const todaysDate = new Date().toISOString().slice(0, 10)
     const item = {
       id: this.id,
       text: str,
-      status: 'incomplete'
+      status: 'incomplete',
+      date: `${todaysDate}`
     }
 
     this.items.push(item)
