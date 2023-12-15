@@ -184,7 +184,7 @@ describe("TodoList", () => {
     })
   })
 
-  xdescribe('Show todos by date', () => {
+  describe('Show todos by date', () => {
     it('getByDate returns all items by date', () => {
       // set up
       const expected = [{
@@ -201,8 +201,8 @@ describe("TodoList", () => {
       }]
 
       // execute
-      todoList.create("turn the heating on!")
-      todoList.create("Do the washing up")
+      todoList.create(new TodoItem("turn the heating on!"))
+      todoList.create(new TodoItem("Do the washing up"))
       const result = todoList.getByDate('15/12/2023')
 
       // verify
