@@ -1,4 +1,4 @@
-const { TodoList, ToDoItem, setId } = require("../src/TodoList.js")
+const { TodoList, TodoItem, setId } = require("../src/TodoList.js")
 
 describe("TodoList", () => {
   let todoList
@@ -18,7 +18,8 @@ describe("TodoList", () => {
     }
 
     // execute
-    const result = todoList.create("turn the heating on!")
+    const item1 = new TodoItem("turn the heating on!")
+    const result = todoList.create(item1)
 
     // verify
     expect(result).toEqual(expected)

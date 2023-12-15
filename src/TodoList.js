@@ -4,7 +4,7 @@ const setId = (value) => {
   id = value
 }
 
-class ToDoItem {
+class TodoItem {
   constructor(str) {
     this.id = id
     this.text = str
@@ -22,7 +22,9 @@ class TodoList {
   }
 
   create(item) {
-    this.items.push(item)
+    const itemToCreate = { id: item.id, text: item.text, status: item.status, date: item.date }
+    this.items.push(itemToCreate)
+    return itemToCreate
   }
 
   showAll () {
@@ -85,14 +87,14 @@ class TodoList {
   }
 }
 
-// const newTodoList = new TodoList()
-// const newTodo1 = new ToDoItem('hi')
+const newTodoList = new TodoList()
+const newTodo1 = new TodoItem('hi')
 // console.log(newTodoList)
 // const newTodo2 = new ToDoItem('bye')
 // const newTodo3 = new ToDoItem('cook')
-// newTodoList.addItemToList(newTodo1)
+newTodoList.create(newTodo1)
 // newTodoList.addItemToList(newTodo2)
 // newTodoList.addItemToList(newTodo3)
-// console.log(newTodoList.showAll())
+console.log(newTodoList.showAll())
 
-module.exports = { TodoList, ToDoItem, setId }
+module.exports = { TodoList, TodoItem, setId }
