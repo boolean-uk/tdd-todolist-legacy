@@ -15,14 +15,8 @@ class TodoList {
     return this.items
   }
 
-  displaySummary() {
-    const itemsLength = this.items.length
-    if (itemsLength === 1) {
-      return this.items[0].text
-    }
-
-    const summary = this.items.map((i) => i.text.slice(0, 20) + '...')
-
+  displaySummary(item) {
+    const summary = item.text.slice(0, 20) + '...'
     return summary
   }
 
