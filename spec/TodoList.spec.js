@@ -180,5 +180,9 @@ describe('TodoList', () => {
       const result = todoList.displayAllItemsText()
       expect(result).toEqual('turn the living room heating on!')
     })
+    it('/ if no items exist in items list array', () => {
+      const result = todoList.displayAllItemsText()
+      expect(result).toEqual('No todo items')
+    })
   })
 })
