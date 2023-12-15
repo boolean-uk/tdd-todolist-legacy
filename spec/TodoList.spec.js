@@ -39,9 +39,10 @@ describe("TodoList", () => {
     // execute
     todoList.create("turn the heating on!")
     todoList.create("Do the washing up")
+    const result = todoList.showAll()
 
     // verify
-    expect(todoList.showAll()).toEqual(expected)
+    expect(result).toEqual(expected)
   })
 
   it("sets item to be complete if found", () => {

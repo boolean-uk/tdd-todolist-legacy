@@ -38,4 +38,9 @@ class TodoList {
   }
 }
 
+const todoList = new TodoList()
+console.log(todoList.create('Do the washing up'))
+console.log(todoList.create('turn the heating on!'))
+console.log(todoList.showAll())
+
 module.exports = TodoList
