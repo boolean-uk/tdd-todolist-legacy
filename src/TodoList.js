@@ -21,14 +21,7 @@ class TodoList {
     this.itemsShortText = []
   }
 
-  // create (str) {
-  //   this.id++
-  //   const item = { id: this.id, text: str, status: 'incomplete', date: new Date().toLocaleDateString() }
-  //   this.items.push(item)
-  //   return item
-  // }
-
-  addItemToList(item) {
+  create(item) {
     this.items.push(item)
   }
 
@@ -92,14 +85,14 @@ class TodoList {
   }
 }
 
-const newTodoList = new TodoList()
-const newTodo1 = new ToDoItem('hi')
-console.log(newTodoList)
-const newTodo2 = new ToDoItem('bye')
-const newTodo3 = new ToDoItem('cook')
-newTodoList.addItemToList(newTodo1)
-newTodoList.addItemToList(newTodo2)
-newTodoList.addItemToList(newTodo3)
-console.log(newTodoList.showAll())
+// const newTodoList = new TodoList()
+// const newTodo1 = new ToDoItem('hi')
+// console.log(newTodoList)
+// const newTodo2 = new ToDoItem('bye')
+// const newTodo3 = new ToDoItem('cook')
+// newTodoList.addItemToList(newTodo1)
+// newTodoList.addItemToList(newTodo2)
+// newTodoList.addItemToList(newTodo3)
+// console.log(newTodoList.showAll())
 
-module.exports = TodoList
+module.exports = { TodoList, ToDoItem, setId }
