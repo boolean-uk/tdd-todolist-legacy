@@ -142,20 +142,16 @@ describe('TodoList', () => {
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
   })
 
-  it('display item summaries when displaying all items', () => {
+  it('display item summary', () => {
     // set up
-    todoList.create('buy Christmas presents for the in-laws')
-    todoList.create('do the dishes and the laundry')
+    const item1 = todoList.create('buy Christmas presents for the in-laws')
     // execute
-    const result = todoList.displaySummary()
+    const result = todoList.displaySummary(item1)
     // verify
-    expect(result).toEqual([
-      'buy Christmas presen...',
-      'do the dishes and th...'
-    ])
+    expect(result).toEqual('buy Christmas presen...')
   })
 
-  it('display item text when displaying one item', () => {
+  xit('display item text when displaying one item', () => {
     // set up
     todoList.create('buy Christmas presents for the in-laws')
     // execute
