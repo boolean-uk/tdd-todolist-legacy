@@ -29,7 +29,7 @@ describe('TodoList', () => {
     // set up
     const item1 = {
       id: 1,
-      text: 'turn the heating on!',
+      text: 'turn the heating on ...',
       status: 'incomplete'
     }
     const item2 = {
@@ -40,7 +40,7 @@ describe('TodoList', () => {
     const expected = [item1, item2]
 
     // execute
-    todoList.create('turn the heating on!')
+    todoList.create('turn the heating on to be very hot!')
     todoList.create('Do the washing up')
 
     // verify
