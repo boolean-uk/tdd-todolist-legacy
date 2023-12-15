@@ -11,6 +11,13 @@ class TodoList {
     return item
   }
 
+  getItemsByDate(date) {
+    return this.items.filter((item) => {
+      // Assuming the item.date is a Date object. Adjust the comparison as needed.
+      return item.date.toDateString() === date.toDateString()
+    })
+  }
+
   showAll() {
     return this.items.map((item) => {
       if (item.text.length > 20) {

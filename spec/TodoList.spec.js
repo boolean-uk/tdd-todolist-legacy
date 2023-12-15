@@ -25,6 +25,30 @@ describe('TodoList', () => {
     expect(result).toEqual(expected)
   })
 
+  it('returns items for a specific date', () => {
+    // set up
+    const item1 = todoList.create('turn the heating on!', expectedDate)
+    const item2 = todoList.create('Do the washing up', new Date(1922, 0, 1)) // different date
+    const expected = [item1]
+
+    // execute
+    const result = todoList.getItemsByDate(expectedDate)
+
+    // verify
+    expect(result).toEqual(expected)
+  })
+
+  it('returns an empty list for a date with no todos', () => {
+    // set up
+    const noTodoDate = new Date(1923, 0, 1)
+
+    // execute
+    const result = todoList.getItemsByDate(noTodoDate)
+
+    // verify
+    expect(result).toEqual([])
+  })
+
   it('returns all items', () => {
     // set up
     const item1 = {
