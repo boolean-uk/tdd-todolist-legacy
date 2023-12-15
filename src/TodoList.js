@@ -7,7 +7,7 @@ class TodoList {
 
   create (str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = { id: this.id, text: str, status: 'incomplete', date: new Date().toLocaleDateString() }
     this.items.push(item)
     return item
   }
@@ -47,15 +47,22 @@ class TodoList {
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
-}
 
-const todoList = new TodoList()
-// todoList.create('Do the washing up')
-// todoList.create('turn the heating on!')
-// todoList.create("Do the laundry at exactly 9am")
-// console.log(todoList.setComplete(1))
-// console.log(todoList.getByStatus('incomplete'))
-// console.log(todoList.showAll())
-// todoList.showAll()
+  getByDate(date) {
+    const checkDateArr = this.items.filter(item => item.date === date)
+    // if array is empty, i.e. no valid date found
+    if (checkDateArr.length === 0) return 'Item not found, search by date format DD/MM/YYYY'
+    // else check if there are multiple todos w/ same date
+    else {
+      // only one todo - return todo with full length text
+      if (checkDateArr.length === 1) {
+        return checkDateArr
+        // multiple todos - return all todos with this date with shortened text
+      } else {
+        return this.showAll().filter(item => item.date === date)
+      }
+    }
+  }
+}
 
 module.exports = TodoList

@@ -181,6 +181,8 @@ describe("TodoList", () => {
       }]
 
       // execute
+      todoList.create("turn the heating on!")
+      todoList.create("Do the washing up")
       const result = todoList.getByDate('15/12/2023')
 
       // verify
