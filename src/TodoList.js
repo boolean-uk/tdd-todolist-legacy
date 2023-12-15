@@ -1,7 +1,12 @@
 class TodoList {
-  constructor() {
+  constructor(date) {
     this.id = 0
     this.items = []
+  }
+
+  setCurrentDate() {
+    const currentDate = new Date().toISOString().slice(8, 18)
+    return currentDate
   }
 
   create(str) {

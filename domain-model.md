@@ -13,10 +13,10 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
 | | | displaySummary(@String[]) | show only the first 20chars and adds ... at the end of that string | there is only one item in the list  / there are two items or more in the list | 20 char.-long string / item.text (as a string)
 
-| | | setCurrentDate(@String) | | |return a string showing the current date in the yy.mm.dd format |
+| | | setCurrentDate(@String)|return a string showing the current date in the yy.mm.dd format 
 
 | | | findByDate(@String) | can search todo items by day | date exist / date does not exist or is invalid | a list of the todos matching that date / null (+ throw an error)
-| | | showAllSummaries(@String) || summaries don't exist | shows a list (array) of all the summaries
+| | | showAllSummaries(@String) | summaries don't exist | shows a list (array) of all the summaries
 ## requirements
 
 1. Show only the first 20chars when displaying all items
