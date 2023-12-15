@@ -12,7 +12,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '15 Dec 2023'
     }
 
     // execute
