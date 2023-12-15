@@ -12,7 +12,8 @@ describe("TodoList", () => {
     const expected = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: '15/12/2023'
     }
 
     // execute
@@ -27,17 +28,20 @@ describe("TodoList", () => {
     const item1 = {
       id: 1,
       text: "turn the heating on!",
-      status: "incomplete"
+      status: "incomplete",
+      date: '15/12/2023'
     }
     const item2 = {
       id: 2,
       text: "Do the washing up",
-      status: "incomplete"
+      status: "incomplete",
+      date: '15/12/2023'
     }
     const item3 = {
       id: 3,
       text: "Do the laundry at ex...",
-      status: "incomplete"
+      status: "incomplete",
+      date: '15/12/2023'
     }
     const expected = [item1, item2, item3]
 
@@ -57,7 +61,8 @@ describe("TodoList", () => {
       const expected = {
         id: 1,
         text: "turn the heating on!",
-        status: "complete"
+        status: "complete",
+        date: '15/12/2023'
       }
   
       // execute
@@ -112,7 +117,8 @@ describe("TodoList", () => {
       const expected = {
         id: 1,
         text: "turn the heating on!",
-        status: "incomplete"
+        status: "incomplete",
+        date: '15/12/2023'
       }
   
       // execute
@@ -137,7 +143,8 @@ describe("TodoList", () => {
       const expected = {
         id: 1,
         text: "turn the heating on!",
-        status: "incomplete"
+        status: "incomplete",
+        date: '15/12/2023'
       }
   
       // execute
@@ -156,4 +163,36 @@ describe("TodoList", () => {
       expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
     })
   })
+
+  describe('Show todos by date', () => {
+    it('getByDate returns all items by date', () => {
+      // set up
+      const expected = [{
+        id: 1,
+        text: "turn the heating on!",
+        status: "incomplete",
+        date: '15/12/2023'
+      },
+      {
+        id: 2,
+        text: "Do the washing up",
+        status: "incomplete",
+        date: '15/12/2023'
+      }]
+
+      // execute
+      const result = todoList.getByData('15/12/2023')
+
+      // verify
+      expect(result).toEqual(expected)
+    })
+
+    it('getByDate throws error if date not found', () => {
+      // set up
+
+      // execute/verify
+      expect(() => todoList.getByStatus().toThrowError("Item not found, search by date format DD/MM/YYYY"))
+    })
+  })
+  
 })
