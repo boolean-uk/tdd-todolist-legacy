@@ -70,32 +70,34 @@ describe("TodoList", () => {
     })
   })
 
-  it("gets incomplete items", () => {
-    // set up
-    const item1 = todoList.create("turn the heating on!")
-    const item2 = todoList.create("Do the washing up")
-    todoList.setComplete(item1.id)
-    const expected = [item2]
-
-    // execute
-    const result = todoList.getByStatus("incomplete")
-
-    // verify
-    expect(result).toEqual(expected)
-  })
-
-  it("gets complete items", () => {
-    // set up
-    const item1 = todoList.create("turn the heating on!")
-    const item2 = todoList.create("Do the washing up")
-    todoList.setComplete(item1.id)
-    const expected = [item1]
-
-    // execute
-    const result = todoList.getByStatus("complete")
-
-    // verify
-    expect(result).toEqual(expected)
+  describe('Get item by completion status', () => {
+    it("gets incomplete items", () => {
+      // set up
+      const item1 = todoList.create("turn the heating on!")
+      const item2 = todoList.create("Do the washing up")
+      todoList.setComplete(item1.id)
+      const expected = [item2]
+  
+      // execute
+      const result = todoList.getByStatus("incomplete")
+  
+      // verify
+      expect(result).toEqual(expected)
+    })
+  
+    it("gets complete items", () => {
+      // set up
+      const item1 = todoList.create("turn the heating on!")
+      const item2 = todoList.create("Do the washing up")
+      todoList.setComplete(item1.id)
+      const expected = [item1]
+  
+      // execute
+      const result = todoList.getByStatus("complete")
+  
+      // verify
+      expect(result).toEqual(expected)
+    })
   })
 
   it("finds item by id", () => {

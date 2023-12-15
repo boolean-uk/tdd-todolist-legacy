@@ -16,9 +16,9 @@ class TodoList {
   }
 
   setComplete (id) {
-    const findItembyId = this.findBy(id)
-    findItembyId.status = 'complete'
-    return findItembyId
+    const item = this.findBy(id)
+    item.status = 'complete'
+    return item
   }
 
   getByStatus (status) {
@@ -40,8 +40,9 @@ class TodoList {
 
 const todoList = new TodoList()
 console.log(todoList.create('Do the washing up'))
-// console.log(todoList.create('turn the heating on!'))
-console.log(todoList.setComplete())
+console.log(todoList.create('turn the heating on!'))
+console.log(todoList.setComplete(1))
+console.log(todoList.getByStatus('incomplete'))
 // console.log(todoList.showAll())
 
 module.exports = TodoList
