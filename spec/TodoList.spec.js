@@ -160,4 +160,12 @@ describe('TodoList', () => {
 
     expect(result).toEqual([item1])
   })
+
+  it('return no items if no matching date', () => {
+    todoList.create("not today's date")
+    todoList.create("also not today's date")
+
+    const result = todoList.getByDate('25 Dec 2023')
+    expect(result).toEqual([])
+  })
 })
