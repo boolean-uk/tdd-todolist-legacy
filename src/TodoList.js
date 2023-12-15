@@ -12,6 +12,12 @@ class TodoList {
   }
 
   showAll() {
+    this.items.map((item) => {
+      if (item.text.length > 20) {
+        item.text = item.text.slice(0, 20) + '...'
+      }
+      return item
+    })
     return this.items
   }
 
