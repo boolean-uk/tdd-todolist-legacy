@@ -1,4 +1,4 @@
-const TodoList = require('../src/TodoList.js')
+const { TodoList, DateStamp } = require('../src/TodoList.js')
 
 describe('TodoList', () => {
   let todoList
@@ -12,7 +12,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: DateStamp()
     }
 
     // execute
@@ -27,12 +28,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: DateStamp()
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: DateStamp()
     }
 
     const expected = [item1, item2]
@@ -49,7 +52,8 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'A thing with a description longer than 20 characters',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: DateStamp()
     }
 
     todoList.create(item1.text)
@@ -64,7 +68,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      created: DateStamp()
     }
 
     // execute
@@ -115,7 +120,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: DateStamp()
     }
 
     // execute
@@ -138,7 +144,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      created: DateStamp()
     }
 
     // execute

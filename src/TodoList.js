@@ -1,13 +1,14 @@
+const DateStamp = () => new Date().toISOString().slice(0, 10)
+
 class TodoList {
   constructor () {
     this.id = 0
     this.items = []
   }
 
-  //  created: new Date().toISOString().slice(0, 10)
   create (str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = { id: this.id, text: str, status: 'incomplete', created: DateStamp() }
     this.items.push(item)
     return item
   }
@@ -44,4 +45,4 @@ class TodoList {
   }
 }
 
-module.exports = TodoList
+module.exports = { TodoList, DateStamp }
