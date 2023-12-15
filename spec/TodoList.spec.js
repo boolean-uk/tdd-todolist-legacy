@@ -251,5 +251,23 @@ describe('TodoList', () => {
         'Please enter a date using numbers in format of YYYY-MM-DD'
       )
     })
+    const expectation = [
+      {
+        id: 2,
+        text: 'do the laundry',
+        status: 'incomplete',
+        date: '2023-12-14'
+      },
+      {
+        id: 3,
+        text: 'pet the cat',
+        status: 'incomplete',
+        date: '2023-12-14'
+      }
+    ]
+    it(' / if param is a number', () => {
+      const result = todoList.findTodoByDate(2023-12-14)
+      expect(result).toEqual(expectation)
+    })
   })
 })
