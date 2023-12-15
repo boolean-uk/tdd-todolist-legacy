@@ -157,7 +157,7 @@ describe("TodoList", () => {
     })
   })
 
-  xdescribe('Delete item by id', () => {
+  describe('Delete item by id', () => {
     it("deletes item by id", () => {
       // set up
       const expected = {
@@ -168,7 +168,7 @@ describe("TodoList", () => {
       }
   
       // execute
-      todoList.create("turn the heating on!")
+      todoList.create(new TodoItem("turn the heating on!"))
       const deletedItem = todoList.deleteBy(1)
   
       // verify
