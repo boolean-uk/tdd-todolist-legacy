@@ -9,7 +9,7 @@ class TodoList {
     this.items = []
   }
 
-  updateText() {
+  concatText() {
     if (this.items.length > 1) {
       this.items.forEach((item) => {
         item.text.length > 20
@@ -32,7 +32,7 @@ class TodoList {
   }
 
   showAll() {
-    this.updateText()
+    this.concatText()
 
     if (this.items.length === 0) {
       return 'TodoList is empty'
@@ -54,7 +54,7 @@ class TodoList {
   }
 
   getByDate(date) {
-    this.updateText()
+    this.concatText()
 
     if (date === undefined) {
       throw new Error('Please input a date')
@@ -72,7 +72,7 @@ class TodoList {
   }
 
   getByStatus(status) {
-    this.updateText()
+    this.concatText()
     return this.items.filter((item) => item.status === status)
   }
 
@@ -86,6 +86,20 @@ class TodoList {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
+  }
+
+  updateText(newText, id) {
+    const item = this.findBy(id)
+
+    if (typeof newText !== 'string' || typeof id !== 'number') {
+      throw new Error(
+        "Please input a valid string & number e.g. ('Water the plants',1)"
+      )
+    }
+
+    item.text = newText
+
+    return item
   }
 }
 
