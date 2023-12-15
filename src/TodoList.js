@@ -47,6 +47,12 @@ class TodoList {
     return item
   }
 
+  setIncomplete(id) {
+    const item = this.findBy(id)
+    item.status = 'incomplete'
+    return item
+  }
+
   getByDate(date) {
     this.updateText()
 
