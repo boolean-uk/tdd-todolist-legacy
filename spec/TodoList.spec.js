@@ -125,27 +125,29 @@ describe("TodoList", () => {
     })
   })
 
-  it("deletes item by id", () => {
-    // set up
-    const item1 = todoList.create("turn the heating on!")
-    const expected = {
-      id: 1,
-      text: "turn the heating on!",
-      status: "incomplete"
-    }
-
-    // execute
-    const deletedItem = todoList.deleteBy(1)
-
-    // verify
-    expect(deletedItem).toEqual(expected)
-    expect(todoList.showAll()).toEqual([])
-  })
-
-  it("delete throws error if not found", () => {
-    // set up
-
-    // execute, verify
-    expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
+  describe('Delete item by id', () => {
+    it("deletes item by id", () => {
+      // set up
+      const expected = {
+        id: 1,
+        text: "turn the heating on!",
+        status: "incomplete"
+      }
+  
+      // execute
+      todoList.create("turn the heating on!")
+      const deletedItem = todoList.deleteBy(1)
+  
+      // verify
+      expect(deletedItem).toEqual(expected)
+      expect(todoList.showAll()).toEqual([])
+    })
+  
+    it("delete throws error if not found", () => {
+      // set up
+  
+      // execute, verify
+      expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
+    })
   })
 })
