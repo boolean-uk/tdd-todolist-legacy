@@ -248,7 +248,7 @@ describe('TodoList', () => {
     it('/ if parameter is left empty', () => {
       const result = todoList.findTodoByDate()
       expect(result).toEqual(
-        'please enter a date using numbers in format of YYYY-MM-DD'
+        'Please enter a date using numbers in format of YYYY-MM-DD'
       )
     })
   })

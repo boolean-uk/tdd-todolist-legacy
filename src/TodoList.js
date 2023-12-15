@@ -53,6 +53,8 @@ class TodoList {
   }
 
   findTodoByDate(date) {
+    if (!date || date.length === 0)
+      return 'Please enter a date using numbers in format of YYYY-MM-DD'
     const todosByDate = this.items.filter((item) => item.date === date)
     return todosByDate
   }
