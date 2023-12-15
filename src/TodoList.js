@@ -66,7 +66,4 @@ class TodoList {
   }
 }
 
-const todos = new TodoList()
-console.log(todos.findTodoByDate('2023-12-15'))
-
 module.exports = TodoList
