@@ -56,7 +56,7 @@ describe("TodoList", () => {
   })
 
   describe('Set complete status', () => {
-    it("sets item to be complete if found", () => {
+    it("sets item to be 'complete' if found & status is currently 'incomplete'", () => {
       // set up
       const expected = {
         id: 1,
@@ -67,6 +67,24 @@ describe("TodoList", () => {
   
       // execute
       todoList.create("turn the heating on!")
+      const result = todoList.setComplete(1)
+  
+      // verify
+      expect(result).toEqual(expected)
+    })
+
+    it("sets item to be 'incomplete' if found & status is currently 'complete'", () => {
+      // set up
+      const expected = {
+        id: 1,
+        text: "turn the heating on!",
+        status: "incomplete",
+        date: '15/12/2023'
+      }
+  
+      // execute
+      todoList.create("turn the heating on!")
+      todoList.setComplete(1)
       const result = todoList.setComplete(1)
   
       // verify
