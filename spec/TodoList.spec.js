@@ -140,6 +140,13 @@ describe('TodoList', () => {
     expect(todoList.filterByDate(DateStamp())).toEqual(expected)
   })
 
+  it("no results for date returns empty array", () => {
+    const item1 = todoList.create("Do something")
+    const item2 = todoList.create("Do something else")
+
+    expect(todoList.filterByDate("Definitely not a valid date")).toEqual([])
+  })
+
   it('findBy throws error if not found', () => {
     // set up
 
