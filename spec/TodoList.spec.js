@@ -187,5 +187,7 @@ describe('TodoList', () => {
     expect(todoList.findByDate(dateString)).toEqual(expected)
   })
 
-  it('should return empty list if item not found by the date')
+  it('should return empty list if item not found by the date', () => {
+    expect(todoList.findByDate(dateString)).toEqual([])
+  })
 })

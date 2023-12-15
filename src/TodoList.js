@@ -54,11 +54,27 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 
+  // findByDate(date) {
+  //   this.items.filter((item) => {
+  //     if (item.date = date) {
+  //       return []
+  //     } else {
+  //       return (item.date = date)
+  //     }
+  //   })
+
+  //   return this.items
+  // }
   findByDate(date) {
-    this.items.filter((item) => {
-      return (item.date = date)
-    })
-    return this.items
+    let result = []
+
+    for (let item of this.items) {
+      if (item.date === date) {
+        result.push(item)
+      }
+    }
+
+    return result
   }
 }
 
@@ -66,6 +82,6 @@ const todolist = new TodoList()
 console.log(todolist.create('wash dishes now'))
 console.log(todolist.create('wash the car'))
 console.log('Show all method', todolist.showAll())
-console.log('Find By Date Method', todolist.findByDate('2023-12-15'))
+console.log('Find By Date Method', todolist.findByDate('2023-12-10'))
 
 module.exports = TodoList

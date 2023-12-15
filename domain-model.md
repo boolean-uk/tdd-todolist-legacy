@@ -46,4 +46,4 @@ show text char from 0 to 20
 
 2. To do items have dates when they were created.
 - A user can search todo items by day and see a list of todo items by the day they were created.
-- If there are no todos for that day, show an empty list
+- If there are no todos for that day, show an empty list 
