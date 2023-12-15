@@ -214,5 +214,29 @@ describe("TodoList", () => {
       expect(() => todoList.getByDate().toThrowError("Item not found, search by date format DD/MM/YYYY"))
     })
   })
-  
+
+  describe('Update item text', () => {
+    it('updateText finds the selected todo by id and updates the text to user input', () => {
+      // set
+      const expected = {
+        id: 1,
+        text: "Walk the dog",
+        status: "incomplete",
+        date: '15/12/2023'
+      }
+      
+      // execute
+      const result = todoList.updateText("Walk the dog")
+
+      // verify
+      expect(result).toEqual(expected)
+    })
+
+    it('updateText throws error if item is not found or text is invalid', () => {
+      // set
+
+      // execute/verify
+      expect(() => todoList.updateText()).toThrowError("unable to process, make sure id is an Integer and text is a String")
+    })
+  })
 })
