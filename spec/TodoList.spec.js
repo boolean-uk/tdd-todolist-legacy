@@ -177,4 +177,15 @@ describe('TodoList', () => {
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
   })
+
+  it('should return itrems created on same day', () => {
+    const item1 = todoList.create('turn the heating on!')
+    const item2 = todoList.create('Do the washing up')
+
+    const expected = [item1, item2]
+
+    expect(todoList.findByDate(dateString)).toEqual(expected)
+  })
+
+  it('should return empty list if item not found by the date')
 })

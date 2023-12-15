@@ -12,7 +12,12 @@ class TodoList {
     const dateString = `${year}-${month}-${day}`
 
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete', date: dateString }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      date: dateString
+    }
     this.items.push(item)
     return item
   }
@@ -48,19 +53,19 @@ class TodoList {
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
-}
 
-const date = new Date()
-const year = date.getFullYear()
-const month = date.getMonth() + 1
-const day = date.getDate()
-const dateString = `${year}-${month}-${day}`
-console.log(dateString)
+  findByDate(date) {
+    this.items.filter((item) => {
+      return (item.date = date)
+    })
+    return this.items
+  }
+}
 
 const todolist = new TodoList()
 console.log(todolist.create('wash dishes now'))
 console.log(todolist.create('wash the car'))
 console.log('Show all method', todolist.showAll())
-// console.log(todolist.create('wash the car'))
+console.log('Find By Date Method', todolist.findByDate('2023-12-15'))
 
 module.exports = TodoList
