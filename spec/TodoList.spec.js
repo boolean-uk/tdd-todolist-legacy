@@ -131,7 +131,7 @@ describe("TodoList", () => {
     })
   })
 
-  xdescribe('Find item by id', () => {
+  describe('Find item by id', () => {
     it("finds item by id", () => {
       // set up
       const expected = {
@@ -142,7 +142,7 @@ describe("TodoList", () => {
       }
   
       // execute
-      todoList.create("turn the heating on!")
+      todoList.create(new TodoItem("turn the heating on!"))
       const result = todoList.findBy(1)
   
       // verify
