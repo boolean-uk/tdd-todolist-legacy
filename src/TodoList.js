@@ -20,6 +20,12 @@ class TodoList {
     return summary
   }
 
+  displayAllSummaries() {
+    const summaries = this.items.map((item) => this.displaySummary(item))
+
+    return summaries
+  }
+
   setComplete(id) {
     const item = this.findBy(id)
     item.status = 'complete'

@@ -46,13 +46,12 @@ describe('TodoList', () => {
 
   it('display all summaries', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
-    const item2 = todoList.create('Do the washing up')
+    todoList.create('turn the heating on!')
+    todoList.create('Do the washing up')
     // execute
     const result = todoList.displayAllSummaries()
     // verify
-    expect(result).toEqual(['turn the heating on !', 'Do the washing up'])
-
+    expect(result).toEqual(['turn the heating on!...', 'Do the washing up...'])
   })
 
   it('sets item to be complete if found', () => {
