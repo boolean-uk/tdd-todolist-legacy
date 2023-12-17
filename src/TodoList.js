@@ -15,7 +15,15 @@ class TodoList {
   }
 
   showAll() {
-    return this.items
+    const filteredList = this.items.map((item) => ({
+      ...item,
+      text:
+        item.text.length > 20
+          ? `${item.text.slice(0, 20).trim()}...`
+          : item.text
+    }))
+
+    return filteredList
   }
 
   setComplete(id) {
