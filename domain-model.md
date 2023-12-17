@@ -12,17 +12,6 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | deleteBy(@Int) | finds item, then removes it from array | item exists | item | `deleteBy(@Int) => {id: 1, text: "hello", status: "incomplete"}`
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
 | | | displaySummary(@String[]) | show only the first 20chars and adds ... at the end of that string | there is only one item in the list  / there are two items or more in the list | 20 char.-long string / item.text (as a string)
-
-| | | setCurrentDate(@String)|return a string showing the current date in the yy.mm.dd format 
-
-| | | findByDate(@String) | can search todo items by day | date exist / date does not exist or is invalid | a list of the todos matching that date / null (+ throw an error)
-| | | showAllSummaries(@String) | summaries don't exist | shows a list (array) of all the summaries
-## requirements
-
-1. Show only the first 20chars when displaying all items
-- When seeing all the items, only show the first 20 chars of the item text, followed by '...'
-- However, when displaying single items, show the whole item text.
-
-2. To do items have dates when they were created.
-- A user can search todo items by day and see a list of todo items by the day they were created.
-- If there are no todos for that day, show an empty list
+| | | setCurrentDate(@String)| return a string showing the current date in the yy.mm.dd format |
+| | | findByDate(@String) | can search todo items by day | date exist / date does not exist or is invalid | a list of the todos matching that date / an empty list (+ throw an error)
+| | | showAllSummaries(@String) | summaries don't exist | shows a list (array) of all the summaries / an empty list
