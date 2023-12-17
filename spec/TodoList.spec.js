@@ -46,6 +46,13 @@ describe('TodoList', () => {
     expect(result).toEqual(['turn the heating on!...', 'Do the washing up...'])
   })
 
+  it('display all summaries', () => {
+    // execute
+    const result = () => todoList.displayAllSummaries()
+    // verify
+    expect(result).toThrowError('no summaries to display - todoList is empty')
+  })
+
   it('sets item to be complete if found', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')
