@@ -54,11 +54,12 @@ describe('TodoList', () => {
   })
 
   it('throw error if there is only one summary to display', () => {
+    todoList.create('Do the washing up')
     // execute
     const result = () => todoList.displayAllSummaries()
     // verify
     expect(result).toThrowError(
-      'only one todo - use display the whole text instead'
+      'only one todo - using displaySummaryOrWholeText() will display the whole text instead'
     )
   })
 
@@ -170,7 +171,7 @@ describe('TodoList', () => {
       'wrap Christmas presents and put them under the tree'
     )
     // execute
-    const result = todoList.displaySummary(item1)
+    const result = todoList.displaySummaryOrWholeText(item1)
     // verify
     expect(result).toEqual('buy Christmas presen...')
   })
@@ -179,7 +180,7 @@ describe('TodoList', () => {
     // set up
     const item1 = todoList.create('buy Christmas presents for the in-laws')
     // execute
-    const result = todoList.displaySummary(item1)
+    const result = todoList.displaySummaryOrWholeText(item1)
     // verify
     expect(result).toEqual('buy Christmas presents for the in-laws')
   })
