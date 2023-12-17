@@ -1,12 +1,15 @@
 class TodoList {
   constructor() {
-    this.id = 0
     this.items = []
   }
 
-  create(str) {
-    this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+  create(str, date = new Date().toISOString().slice(0, 9).trim()) {
+    const item = {
+      id: this.items.length + 1,
+      text: str,
+      status: 'incomplete',
+      date
+    }
     this.items.push(item)
     return item
   }

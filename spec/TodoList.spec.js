@@ -12,11 +12,12 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '2023-12-17'
     }
 
     // execute
-    const result = todoList.create('turn the heating on!')
+    const result = todoList.create('turn the heating on!', '2023-12-17')
 
     // verify
     expect(result).toEqual(expected)
@@ -29,19 +30,19 @@ describe('TodoList', () => {
         id: 1,
         text: 'turn the hearing on...',
         status: 'incomplete',
-        date: '17-12-2023'
+        date: '2023-12-17'
       },
       {
         id: 2,
         text: 'Do the washing up',
         status: 'incomplete',
-        date: '17-12-2023'
+        date: '2023-12-17'
       }
     ]
 
     // execute
-    todoList.create('turn the heating on for 3 hours')
-    todoList.create('Do the washing up')
+    todoList.create('turn the heating on for 3 hours', '2023-12-17')
+    todoList.create('Do the washing up', '2023-12-17')
 
     // verify
     expect(todoList.showAll()).toEqual(expected)
@@ -49,11 +50,12 @@ describe('TodoList', () => {
 
   it('sets item to be complete if found', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
+    const item1 = todoList.create('turn the heating on!', '2023-12-17')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: '2023-12-17'
     }
 
     // execute
@@ -72,8 +74,8 @@ describe('TodoList', () => {
 
   it('gets incomplete items', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
-    const item2 = todoList.create('Do the washing up')
+    const item1 = todoList.create('turn the heating on!', '2023-12-17')
+    const item2 = todoList.create('Do the washing up', '2023-12-17')
     todoList.setComplete(item1.id)
     const expected = [item2]
 
@@ -86,8 +88,8 @@ describe('TodoList', () => {
 
   it('gets complete items', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
-    todoList.create('Do the washing up')
+    const item1 = todoList.create('turn the heating on!', '2023-12-17')
+    todoList.create('Do the washing up', '2023-12-17')
     todoList.setComplete(item1.id)
     const expected = [item1]
 
@@ -100,11 +102,12 @@ describe('TodoList', () => {
 
   it('finds item by id', () => {
     // set up
-    const item1 = todoList.create('turn the heating on!')
+    const item1 = todoList.create('turn the heating on!', '2023-12-17')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '2023-12-17'
     }
 
     // execute
@@ -123,11 +126,12 @@ describe('TodoList', () => {
 
   it('deletes item by id', () => {
     // set up
-    todoList.create('turn the heating on!')
+    todoList.create('turn the heating on!', '2023-12-17')
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '2023-12-17'
     }
 
     // execute
