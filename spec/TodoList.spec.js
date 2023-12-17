@@ -46,7 +46,7 @@ describe('TodoList', () => {
     expect(result).toEqual(['turn the heating on!...', 'Do the washing up...'])
   })
 
-  it('display all summaries', () => {
+  it('throw error if no summaries to display', () => {
     // execute
     const result = () => todoList.displayAllSummaries()
     // verify

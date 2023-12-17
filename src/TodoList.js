@@ -33,6 +33,9 @@ class TodoList {
 
   displayAllSummaries() {
     const summaries = this.items.map(this.displaySummary)
+    if (summaries.length === 0) {
+      throw Error('no summaries to display - todoList is empty')
+    }
     return summaries
   }
 
