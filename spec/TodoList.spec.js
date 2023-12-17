@@ -157,7 +157,7 @@ describe('TodoList', () => {
     todoList.create('Get Up', '2023-12-17')
     todoList.create('5', '2023-12-10')
 
-    const expect = [
+    const expected = [
       {
         id: 1,
         text: 'turn the heating on!',
@@ -176,10 +176,10 @@ describe('TodoList', () => {
     const res = todoList.findByDate('2023-12-17')
 
     // verify
-    expect(res).toEqual(expect)
+    expect(res).toEqual(expected)
   })
 
-  it('find item by date', () => {
+  it('find item by date which does not exist', () => {
     // set up
     todoList.create('turn the heating on!', '2023-12-17')
     todoList.create('2', '2023-12-15')
@@ -188,7 +188,7 @@ describe('TodoList', () => {
     todoList.create('5', '2023-12-10')
 
     // execute
-    const res = todoList.findByDate('2023-12-17')
+    const res = todoList.findByDate('2025-12-17')
 
     // verify
     expect(res).toEqual([])
