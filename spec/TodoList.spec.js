@@ -147,29 +147,29 @@ describe('TodoList', () => {
 
   it('find item by date', () => {
     // set up
-    todoList.create('turn the heating on!', '17-12-2023')
-    todoList.create('2', '')
-    todoList.create('3')
-    todoList.create('Get Up', '17-12-2023')
-    todoList.create('5')
+    todoList.create('turn the heating on!', '2023-12-17')
+    todoList.create('2', '2023-12-15')
+    todoList.create('3', '2023-12-23')
+    todoList.create('Get Up', '2023-12-17')
+    todoList.create('5', '2023-12-10')
 
     const expect = [
       {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: '17-12-2023'
+        date: '2023-12-17'
       },
       {
         id: 4,
         text: 'Get Up',
         status: 'incomplete',
-        date: '17-12-2023'
+        date: '2023-12-17'
       }
     ]
 
     // execute
-    const res = todoList.findByDate('17-12-2023')
+    const res = todoList.findByDate('2023-12-17')
 
     // verify
     expect(res).toEqual(expect)
@@ -177,14 +177,14 @@ describe('TodoList', () => {
 
   it('find item by date', () => {
     // set up
-    todoList.create('turn the heating on!', '17-12-2023')
-    todoList.create('2', '15-12-2023')
-    todoList.create('3', '23-12-2023')
-    todoList.create('Get Up', '17-12-2023')
-    todoList.create('5', '10-12-2023')
+    todoList.create('turn the heating on!', '2023-12-17')
+    todoList.create('2', '2023-12-15')
+    todoList.create('3', '2023-12-23')
+    todoList.create('Get Up', '2023-12-17')
+    todoList.create('5', '2023-12-10')
 
     // execute
-    const res = todoList.findByDate('17-12-2025')
+    const res = todoList.findByDate('2023-12-17')
 
     // verify
     expect(res).toEqual([])
