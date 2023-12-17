@@ -220,7 +220,7 @@ describe('TodoList', () => {
     todoList.items.push(item3)
     todoList.items.push(item4)
 
-    const result = todoList.findByDate('2007-11-23')
+    const result = () => todoList.findByDate('2007-11-23')
     expect(result).toThrowError('no todos match this date')
   })
 })

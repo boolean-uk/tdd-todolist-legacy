@@ -60,6 +60,7 @@ class TodoList {
 
   findByDate(date) {
     const itemsFound = this.items.filter((item) => item.date === date)
+    if (itemsFound.length === 0) throw new Error('no todos match this date')
     return itemsFound
   }
 }
