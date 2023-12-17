@@ -56,10 +56,10 @@ class TodoList {
   }
 }
 
-const getTodoList = new TodoList()
-console.log(getTodoList.create('do the exercises '))
-console.log(getTodoList.create('do the house chores'))
-console.log('show the method', getTodoList.showAll)
-console.log('find the date method', getTodoList.findTheDate('2023-12-17'))
+const todoList = new TodoList()
+console.log(todoList.create('do the exercises '))
+console.log(todoList.create('do the house chores'))
+console.log('show the method', todoList.showAll)
+console.log('find the date method', todoList.findTheDate('2023-12-17'))
 
 module.exports = TodoList
