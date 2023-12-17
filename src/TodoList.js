@@ -22,6 +22,11 @@ class TodoList {
   }
 
   showAll() {
+    this.items.forEach((item) => {
+      if (item.text.length > 20) {
+        item.text = item.text.slice(0, 20).concat('...')
+      }
+    })
     return this.items
   }
 
@@ -46,6 +51,15 @@ class TodoList {
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
+  findTheDate(getDate) {
+    return this.items.filter((item) => item.getDate === getDate)
+  }
 }
+
+const getTodoList = new TodoList()
+console.log(getTodoList.create('do the exercises '))
+console.log(getTodoList.create('do the house chores'))
+console.log('show the method', getTodoList.showAll)
+console.log('find the date method', getTodoList.findTheDate('2023-12-17'))
 
 module.exports = TodoList
