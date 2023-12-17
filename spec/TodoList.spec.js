@@ -144,4 +144,49 @@ describe('TodoList', () => {
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
   })
+
+  it('find item by date', () => {
+    // set up
+    todoList.create('turn the heating on!', '17-12-2023')
+    todoList.create('2', '')
+    todoList.create('3')
+    todoList.create('Get Up', '17-12-2023')
+    todoList.create('5')
+
+    const expect = [
+      {
+        id: 1,
+        text: 'turn the heating on!',
+        status: 'incomplete',
+        date: '17-12-2023'
+      },
+      {
+        id: 4,
+        text: 'Get Up',
+        status: 'incomplete',
+        date: '17-12-2023'
+      }
+    ]
+
+    // execute
+    const res = todoList.findByDate('17-12-2023')
+
+    // verify
+    expect(res).toEqual(expect)
+  })
+
+  it('find item by date', () => {
+    // set up
+    todoList.create('turn the heating on!', '17-12-2023')
+    todoList.create('2', '15-12-2023')
+    todoList.create('3', '23-12-2023')
+    todoList.create('Get Up', '17-12-2023')
+    todoList.create('5', '10-12-2023')
+
+    // execute
+    const res = todoList.findByDate('17-12-2025')
+
+    // verify
+    expect(res).toEqual([])
+  })
 })
