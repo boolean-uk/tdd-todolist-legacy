@@ -24,20 +24,23 @@ describe('TodoList', () => {
 
   it('returns all items', () => {
     // set up
-    const item1 = {
-      id: 1,
-      text: 'turn the heating on!',
-      status: 'incomplete'
-    }
-    const item2 = {
-      id: 2,
-      text: 'Do the washing up',
-      status: 'incomplete'
-    }
-    const expected = [item1, item2]
+    const expected = [
+      {
+        id: 1,
+        text: 'turn the hearing on...',
+        status: 'incomplete',
+        date: '17-12-2023'
+      },
+      {
+        id: 2,
+        text: 'Do the washing up',
+        status: 'incomplete',
+        date: '17-12-2023'
+      }
+    ]
 
     // execute
-    todoList.create('turn the heating on!')
+    todoList.create('turn the heating on for 3 hours')
     todoList.create('Do the washing up')
 
     // verify
