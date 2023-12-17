@@ -26,22 +26,25 @@ class TodoList {
     return this.items
   }
 
-  displaySummaryOrWholeText(item) {
-    if (this.items.length === 1) return this.items[0].text
+  displaySummaryOrWholeText(item, listLength) {
+    if (listLength === 1) return this.items[0].text
     const summary = item.text.slice(0, 20) + '...'
     return summary
   }
 
   displayAllSummaries() {
-    if (this.items.length === 0) {
+    const listLength = this.items.length
+    if (listLength === 0) {
       throw Error('no summaries to display - todoList is empty')
     }
-    if (this.items.length === 1) {
+    if (listLength === 1) {
       throw Error(
         'only one todo - using displaySummaryOrWholeText() will display the whole text instead'
       )
     }
-    const summaries = this.items.map(this.displaySummary)
+    const summaries = this.items.map((i) =>
+      this.displaySummaryOrWholeText(i, listLength)
+    )
     return summaries
   }
 

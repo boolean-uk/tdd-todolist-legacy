@@ -179,8 +179,8 @@ describe('TodoList', () => {
   it('display the entire text if there is only one item in the list', () => {
     // set up
     const item1 = todoList.create('buy Christmas presents for the in-laws')
-    // execute
-    const result = todoList.displaySummaryOrWholeText(item1)
+    const listLength = 1
+    const result = todoList.displaySummaryOrWholeText(item1, listLength)
     // verify
     expect(result).toEqual('buy Christmas presents for the in-laws')
   })
