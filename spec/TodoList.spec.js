@@ -53,6 +53,15 @@ describe('TodoList', () => {
     expect(result).toThrowError('no summaries to display - todoList is empty')
   })
 
+  it('throw error if there is only one summary to display', () => {
+    // execute
+    const result = () => todoList.displayAllSummaries()
+    // verify
+    expect(result).toThrowError(
+      'only one todo - use display the whole text instead'
+    )
+  })
+
   it('sets item to be complete if found', () => {
     // set up
     const item1 = todoList.create('turn the heating on!')
@@ -157,10 +166,22 @@ describe('TodoList', () => {
   it('display item summary', () => {
     // set up
     const item1 = todoList.create('buy Christmas presents for the in-laws')
+    const item2 = todoList.create(
+      'wrap Christmas presents and put them under the tree'
+    )
     // execute
     const result = todoList.displaySummary(item1)
     // verify
     expect(result).toEqual('buy Christmas presen...')
+  })
+
+  it('display the entire text if there is only one item in the list', () => {
+    // set up
+    const item1 = todoList.create('buy Christmas presents for the in-laws')
+    // execute
+    const result = todoList.displaySummary(item1)
+    // verify
+    expect(result).toEqual('buy Christmas presents for the in-laws')
   })
 
   it('finds items by their date', () => {
