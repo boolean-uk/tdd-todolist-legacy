@@ -190,7 +190,7 @@ describe('TodoList', () => {
     expect(result).toEqual([item2, item4])
   })
 
-  it('no items match this date', () => {
+  it('findByDate throws error if no matches found', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
@@ -221,6 +221,6 @@ describe('TodoList', () => {
     todoList.items.push(item4)
 
     const result = todoList.findByDate('2007-11-23')
-    expect(result).toEqual([])
+    expect(result).toThrowError('no todos match this date')
   })
 })
