@@ -7,7 +7,12 @@ class TodoList {
 
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      date: new Date().toLocaleDateString()
+    }
     this.items.push(item)
     return item
   }
