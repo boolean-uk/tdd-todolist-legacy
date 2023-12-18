@@ -38,7 +38,7 @@ describe('TodoList', () => {
       },
       {
         id: 3,
-        text: 'study whole day for ...',
+        text: 'Study whole day for ...',
         status: 'incomplete'
       }
     ]
@@ -46,7 +46,7 @@ describe('TodoList', () => {
     // execute
     todoList.create('turn the heating on!')
     todoList.create('Do the washing up')
-    todoList.create('study whole day for the exam')
+    todoList.create('Study whole day for the exam')
     // verify
     expect(todoList.showAll()).toEqual(expected)
   })
