@@ -11,6 +11,7 @@ class TodoList {
       date
     }
     this.items.push(item)
+
     return item
   }
 

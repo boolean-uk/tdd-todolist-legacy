@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx jasmine"
+    "test": "npx jasmine",
+    "test-dev": "nodemon --exec npx jasmine"
   },
   "author": "",
   "license": "ISC",
