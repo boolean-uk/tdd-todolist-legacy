@@ -9,5 +9,7 @@ TodoList | id @Int, items @Array | create(@String) | id increments, status start
 | | | getByStatus(@String) | | | array, filtered by property status | `getByStatus("incomplete") => [{id: 1, text: "hello", status: "incomplete", date: "18/12/2023"}]`
 | | | findBy(@Int) | | item exists |item | `findBy(1) => {id: 1, text: "hello", status: "incomplete", date: "18/12/2023"}`
 | | | | | item does not exist | thrown error | `findBy(1) => thrown error "Item not Found"`
-| | | deleteBy(@Int) | finds item, then removes it from array | item exists | item | `deleteBy(@Int) => {id: 1, text: "hello", status: "incomplete", date: "18/12/2023"}`
+| | | deleteBy(@Int) | finds item, then removes it from array | item exists | item | `deleteBy('18/12/2023') => {id: 1, text: "hello", status: "incomplete", date: "18/12/2023"}`
 | | | | | item does not exist | thrown error | `deleteBy(@Int) => thrown error "Item not Found"`
+| | | getByDate(@string) | || array.filtered by date | `getByDate(@string) => {id: 1, text:'hello' ,status :'incompleted' , date : '18/12/2023'}`
+||||| item does not exist | throw error | `getByDate ('18/14/2023') => throw error 'Item not found'`
