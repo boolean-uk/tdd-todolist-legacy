@@ -13,7 +13,7 @@ describe('TodoList', () => {
       id: 1,
       text: 'turn the heating on!',
       status: 'incomplete',
-      date: "18/12/2023"
+      date: '18/12/2023'
     }
 
     // execute
@@ -31,19 +31,19 @@ describe('TodoList', () => {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: "18/12/2023"
+        date: '18/12/2023'
       },
       {
         id: 2,
         text: 'Do the washing up',
         status: 'incomplete',
-        date: "18/12/2023"
+        date: '18/12/2023'
       },
       {
         id: 3,
         text: 'Study whole day for ...',
         status: 'incomplete',
-        date: "18/12/2023"
+        date: '18/12/2023'
       }
     ]
 
@@ -63,7 +63,7 @@ describe('TodoList', () => {
         id: 1,
         text: 'turn the heating on!',
         status: 'complete',
-        date: "18/12/2023"
+        date: '18/12/2023'
       }
 
       // execute
@@ -119,7 +119,7 @@ describe('TodoList', () => {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: "18/12/2023"
+        date: '18/12/2023'
       }
 
       // execute
@@ -145,7 +145,7 @@ describe('TodoList', () => {
         id: 1,
         text: 'turn the heating on!',
         status: 'incomplete',
-        date: "18/12/2023"
+        date: '18/12/2023'
       }
 
       // execute
@@ -164,5 +164,37 @@ describe('TodoList', () => {
     })
   })
 
-  describe('')
+  describe('show todoList by date', () => {
+    it('shows todolist by date', () => {
+      const expected = [
+        {
+          id: 1,
+          text: 'turn the heating on!',
+          status: 'incomplete',
+          date: '18/12/2023'
+        },
+        {
+          id: 2,
+          text: 'Do the washing up',
+          status: 'incomplete',
+          date: '18/12/2023'
+        }
+      ]
+
+      todoList.create('turn the heating on!')
+      todoList.create('Do the washing up')
+
+      const result = todoList.getByDate('18/12/2023')
+
+      expect(result).toEqual(expected)
+    })
+
+    it('gives and error if there is not valid date', () => {
+      const result = todoList.getByDate()
+
+      expect(result).toThrowError(
+        'Item not found, search by date format DD/MM/YYYY'
+      )
+    })
+  })
 })
