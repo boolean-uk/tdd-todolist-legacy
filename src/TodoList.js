@@ -53,8 +53,14 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 
-  getByDate(){
-    
+  getByDate(date) {
+    const checkDate = this.items.filter((item) => item.date === date)
+
+    if (checkDate.length === 0) {
+      return []
+    } else {
+      return checkDate
+    }
   }
 }
 
@@ -63,10 +69,7 @@ const todoList = new TodoList()
 todoList.create('homework')
 todoList.create('classworkssssssssssssssssssssssssssssssss')
 todoList.setComplete(2)
-// console.log(todoList.setComplete(3))
-// console.log(todoList.getByStatus('complete'))
-// console.log(todoList.findBy(1))
-console.log(todoList.deleteBy(1))
+console.log(todoList.getByDate('18/12/2023'))
 
 console.log(todoList.showAll())
 

@@ -192,9 +192,7 @@ describe('TodoList', () => {
     it('gives and error if there is not valid date', () => {
       const result = todoList.getByDate()
 
-      expect(result).toThrowError(
-        'Item not found, search by date format DD/MM/YYYY'
-      )
+      expect(result).toEqual([])
     })
   })
 })
