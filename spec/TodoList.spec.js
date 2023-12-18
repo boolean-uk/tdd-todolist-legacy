@@ -219,4 +219,26 @@ describe('TodoList', () => {
     // execute, verify
     expect(() => todoList.toggleComplete(1)).toThrowError('Item not found')
   })
+
+  it('edit to do text if item found', () => {
+    // set up
+    todoList.create('turn the heating on!', '2023-12-17')
+    todoList.create('2', '2023-12-15')
+    todoList.create('3', '2023-12-23')
+
+    // execute
+    const res = todoList.editTextById(2, 'hello')
+
+    // verify
+    expect(res.text).toEqual('hello')
+  })
+
+  it('edit to do text if item not found', () => {
+    // set up
+
+    // execute, verify
+    expect(() => todoList.editTextById(1, 'hello')).toThrowError(
+      'Item not found'
+    )
+  })
 })
