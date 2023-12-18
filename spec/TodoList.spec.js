@@ -193,4 +193,30 @@ describe('TodoList', () => {
     // verify
     expect(res).toEqual([])
   })
+
+  it('toggle complete if item found', () => {
+    // set up
+    todoList.create('turn the heating on!', '2023-12-17')
+    todoList.create('2', '2023-12-15')
+    todoList.create('3', '2023-12-23')
+
+    // execute
+    todoList.toggleComplete(2)
+    todoList.toggleComplete(2)
+    todoList.toggleComplete(3)
+
+    const res = todoList.findBy(2)
+    const res2 = todoList.findBy(3)
+
+    // verify
+    expect(res.status).toEqual('incomplete')
+    expect(res2.status).toEqual('complete')
+  })
+
+  it('toggle complete if item not found', () => {
+    // set up
+
+    // execute, verify
+    expect(() => todoList.toggleComplete(1)).toThrowError('Item not found')
+  })
 })
