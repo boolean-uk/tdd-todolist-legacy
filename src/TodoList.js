@@ -66,6 +66,12 @@ class TodoList {
 
     return searchedList
   }
+
+  editTextById(id, text) {
+    const item = this.findBy(id)
+    item.text = text
+    return item
+  }
 }
 
 module.exports = TodoList
