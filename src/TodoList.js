@@ -1,41 +1,77 @@
 class TodoList {
-  constructor () {
+  constructor() {
     this.id = 0
     this.items = []
+    this.longTextItems = []
   }
 
-  create (str) {
+  create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      date: new Date().toLocaleDateString()
+    }
     this.items.push(item)
     return item
   }
 
-  showAll () {
-    return this.items
+  showAll() {
+    this.items.forEach((toDoItem) => {
+      if (toDoItem.text.length > 20) {
+        toDoItem.text = `${toDoItem.text.substring(0, 20)}...`
+        this.longTextItems.push(toDoItem)
+        return toDoItem
+      } else {
+        this.longTextItems.push(toDoItem)
+        return toDoItem
+      }
+    })
+    return this.longTextItems
   }
 
-  setComplete (id) {
+  setComplete(id) {
     const item = this.findBy(id)
     item.status = 'complete'
     return item
   }
 
-  getByStatus (status) {
-    return this.items.filter(item => item.status === status)
+  getByStatus(status) {
+    return this.items.filter((item) => item.status === status)
   }
 
-  findBy (id) {
-    const item = this.items.find(item => item.id === id)
+  findBy(id) {
+    const item = this.items.find((item) => item.id === id)
     if (item === undefined) throw new Error('Item not found')
     return item
   }
 
-  deleteBy (id) {
+  deleteBy(id) {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
     return this.items.splice(index, 1)[0]
   }
+
+  getByDate(date) {
+    const checkDate = this.items.filter((item) => item.date === date)
+
+    if (checkDate.length === 0) {
+      return []
+    } else {
+      return checkDate
+    }
+  }
 }
 
+const todoList = new TodoList()
+
+todoList.create('homework')
+todoList.create('classworkssssssssssssssssssssssssssssssss')
+todoList.setComplete(2)
+console.log(todoList.getByDate('18/12/2023'))
+
+console.log(todoList.showAll())
+
+todoList.showAll()
 module.exports = TodoList
