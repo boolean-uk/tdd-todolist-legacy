@@ -52,7 +52,13 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
   findTheDate(getDate) {
-    return this.items.filter((item) => item.getDate === getDate)
+    let result = []
+
+    for (let item of this.items) {
+      if (item.getDate === getDate) result.push(item)
+    }
+
+    return result
   }
 }
 
