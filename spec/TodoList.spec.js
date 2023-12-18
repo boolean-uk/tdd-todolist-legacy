@@ -35,13 +35,18 @@ describe('TodoList', () => {
         id: 2,
         text: 'Do the washing up',
         status: 'incomplete'
+      },
+      {
+        id: 3,
+        text: 'study whole day for ...',
+        status: 'incomplete'
       }
     ]
 
     // execute
     todoList.create('turn the heating on!')
     todoList.create('Do the washing up')
-
+    todoList.create('study whole day for the exam')
     // verify
     expect(todoList.showAll()).toEqual(expected)
   })
