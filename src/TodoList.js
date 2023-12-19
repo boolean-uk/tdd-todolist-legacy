@@ -11,12 +11,13 @@ class TodoList {
 
   concatText() {
     if (this.items.length > 1) {
-      this.items.forEach((item) => {
-        item.text.length > 20
-          ? (item.text = item.text.slice(0, 20) + '...')
-          : item.text
-      })
+      return this.items.map((item) => ({
+        ...item,
+        text: item.text.length > 20 ? item.text.slice(0, 20) + '...' : item.text
+      }))
     }
+
+    return this.items
   }
 
   create(str) {
@@ -32,12 +33,12 @@ class TodoList {
   }
 
   showAll() {
-    this.concatText()
+    const items = this.concatText()
 
     if (this.items.length === 0) {
       return 'TodoList is empty'
     } else {
-      return this.items
+      return items
     }
   }
 
@@ -54,7 +55,7 @@ class TodoList {
   }
 
   getByDate(date) {
-    this.concatText()
+    const items = this.concatText()
 
     if (date === undefined) {
       throw new Error('Please input a date')
@@ -62,18 +63,18 @@ class TodoList {
       throw new Error("Please input a valid date e.g. '2023/6/14'")
     }
 
-    const isValid = this.items.some((item) => item.created === date)
+    const isValid = items.some((item) => item.created === date)
 
     if (isValid) {
-      return this.items.filter((item) => item.created === date)
+      return items.filter((item) => item.created === date)
     } else {
       return 'There are no Todos on that date'
     }
   }
 
   getByStatus(status) {
-    this.concatText()
-    return this.items.filter((item) => item.status === status)
+    const items = this.concatText()
+    return items.filter((item) => item.status === status)
   }
 
   findBy(id) {
