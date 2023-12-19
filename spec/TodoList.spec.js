@@ -12,7 +12,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '18 dec 2023'
     }
 
     // execute
@@ -27,12 +28,14 @@ describe('TodoList', () => {
     const item1 = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '18 dec 2023'
     }
     const item2 = {
       id: 2,
       text: 'Do the washing up',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '18 dec 2023'
     }
     const expected = [item1, item2]
 
@@ -50,7 +53,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'complete'
+      status: 'complete',
+      date: '18 dec 2023'
     }
 
     // execute
@@ -101,7 +105,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '18 dec 2023'
     }
 
     // execute
@@ -124,7 +129,8 @@ describe('TodoList', () => {
     const expected = {
       id: 1,
       text: 'turn the heating on!',
-      status: 'incomplete'
+      status: 'incomplete',
+      date: '18 dec 2023'
     }
 
     // execute
@@ -140,5 +146,23 @@ describe('TodoList', () => {
 
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError('Item not found')
+  })
+
+  it('get items by date', () => {
+    const item1 = todoList.create("today's date")
+    const item2 = todoList.create("not today's date")
+    item2.date = '17 Dec 2023'
+
+    const result = todoList.getByDate('15 Dec 2023')
+
+    expect(result).toEqual([item1])
+  })
+
+  it('return no items if no matching date', () => {
+    todoList.create("not today's date")
+    todoList.create("also not today's date")
+
+    const result = todoList.getByDate('18 Dec 2023')
+    expect(result).toEqual([])
   })
 })
