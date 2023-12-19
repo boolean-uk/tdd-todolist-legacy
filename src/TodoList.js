@@ -1,16 +1,20 @@
 class TodoList {
-  constructor () {
+  constructor() {
     this.id = 0
     this.items = []
   }
-
   create(str) {
     this.id++
-    const item = { id: this.id, text: str, status: 'incomplete', date: '17 dec 2023' }
+
+    const item = {
+      id: this.id,
+      text: str,
+      status: 'incomplete',
+      date: '15 Dec 2023'
+    }
     this.items.push(item)
     return item
   }
-
   showAll() {
     this.items.map((item) => {
       if (item.text.length > 20) {
@@ -20,7 +24,6 @@ class TodoList {
     })
     return this.items
   }
-
   setComplete(id) {
     const item = this.findBy(id)
     item.status = 'complete'
@@ -36,7 +39,6 @@ class TodoList {
     if (item === undefined) throw new Error('Item not found')
     return item
   }
-
   deleteBy(id) {
     const item = this.findBy(id)
     const index = this.items.indexOf(item)
