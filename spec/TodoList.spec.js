@@ -151,7 +151,7 @@ describe('TodoList', () => {
   it('get items by date', () => {
     const item1 = todoList.create("today's date")
     const item2 = todoList.create("not today's date")
-    item2.date = '17 Dec 2023'
+    item2.date = '18 Dec 2023'
 
     const result = todoList.getByDate('15 Dec 2023')
 
