@@ -35,6 +35,38 @@ describe('TodoList', () => {
     expect(result).toEqual(expected)
   })
 
+  it('item longer than 20 chars shows all text after showAll() with multiple todos', () => {
+    const expected = [
+      {
+        id: 1,
+        text: 'water the dog and pe...',
+        status: 'incomplete',
+        created: currentDate
+      },
+      {
+        id: 2,
+        text: 'water the plants.',
+        status: 'incomplete',
+        created: currentDate
+      }
+    ]
+    const expected2 = {
+      id: 1,
+      text: 'water the dog and pet the plants.',
+      status: 'incomplete',
+      created: currentDate
+    }
+
+    const item1 = todoList.create('water the dog and pet the plants.')
+    const item2 = todoList.create('water the plants.')
+
+    const result = todoList.showAll()
+    const result2 = todoList.findBy(1)
+
+    expect(result).toEqual(expected)
+    expect(result2).toEqual(expected2)
+  })
+
   it('item longer than 20 chars shows all text on showAll() with 1 todo', () => {
     const expected = [
       {
@@ -257,7 +289,7 @@ describe('TodoList', () => {
       id: 1,
       text: 'feed the cat',
       status: 'incomplete',
-      created: '2023/12/15'
+      created: currentDate
     }
 
     const result = todoList.updateText('feed the cat', 1)
