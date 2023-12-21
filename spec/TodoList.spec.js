@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 const TodoList = require("../src/TodoList.js")
 
 describe("TodoList", () => {
@@ -141,4 +142,15 @@ describe("TodoList", () => {
     // execute, verify
     expect(() => todoList.deleteBy(1)).toThrowError("Item not found")
   })
+
+
+  it('check if the text is greater than 20', () => {
+    todoList.create('usamajdbuebfucedsucjbehhhhudjbeu')
+
+    const result = todoList.showAll()
+    console.log(result)
+    expect(result[0].text.length).toEqual(23)
+  })
+
+
 })
