@@ -4,12 +4,29 @@ class TodoList {
     this.items = []
   }
 
-  create (str) {
-    this.id++
-    const item = { id: this.id, text: str, status: 'incomplete' }
-    this.items.push(item)
-    return item
+
+  create(str) {
+      
+    if (str.length > 20) {
+      const shortenedText = `${str.substring(0, 20)}...`;
+
+      this.id++;
+      const item = { id: this.id, text: shortenedText, status: 'incomplete' };
+      this.items.push(item);
+      return item;
+    } 
+    else {
+      this.id++;
+      const item = { id: this.id, text: str, status: 'incomplete' };
+      this.items.push(item);
+      return item;
+    }
   }
+
+
+  
+
+
 
   showAll () {
     return this.items
@@ -37,5 +54,7 @@ class TodoList {
     return this.items.splice(index, 1)[0]
   }
 }
+
+
 
 module.exports = TodoList
