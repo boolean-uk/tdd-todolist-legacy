@@ -9,16 +9,17 @@ describe("TodoList", () => {
 
   it("creates a todo item", () => {
     // set up
+
+
+    const todo1 = todoList.create("turn the heating on!")
+    const todo2 = todoList.create("Go to the town for shopping and a dinner ")
+    const todo3 = todoList.create('work on my project and do some exercises on javascript')
+
+    // execute
     const expected =[
       { id: 1, text: 'turn the heating on!', status: 'incomplete' },
       { id: 2, text: 'Go to the town for s...', status: 'incomplete' }
     ]
-
-    // execute
-
-    const todo1 = todoList.create("turn the heating on!")
-    const todo2 = todoList.create("Go to the town for shopping and a dinner ")
-
 
     // verify
     expect(todo1).toEqual({ id: 1, text: 'turn the heating on!', status: 'incomplete' })
@@ -37,12 +38,25 @@ describe("TodoList", () => {
       text: "Do the washing up",
       status: "incomplete"
     }
-    const expected = [item1, item2]
+    const item3 = {
+      id: 2,
+      text: "work on my project and do some exercises on javascript",
+      status: "incomplete"
+    }
+
+    const item3Tobe = {
+      id: 3,
+      text: "work on my project a...",
+      status: "incomplete"
+    }
+    const expected = [item1, item2, item3Tobe]
 
     // execute
     todoList.create("turn the heating on!")
     todoList.create("Do the washing up")
+    todoList.create("work on my project and do some exercises on javascript")
 
+ 
     // verify
     expect(todoList.showAll()).toEqual(expected)
   })
