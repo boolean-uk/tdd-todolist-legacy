@@ -209,12 +209,14 @@ describe("TodoList", () => {
       todoList.create("Go to the gym", "01-12-2024")
       todoList.create("Go to the GP", "01-03-2024")
 
+
+      //execute
       const firstSearch = todoList.searchByDate("01-12-2024")
+
+      //verify
       expect(firstSearch).toEqual(item3)
 
 
-
-      //execute
 
   })
 })
